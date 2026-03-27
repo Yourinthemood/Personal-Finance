@@ -1,1 +1,8 @@
 #1st Budgeting_tools.py
+
+CLASS tools: 
+    ATTRIBUTES:
+        cash_type
+        Budget
+        etc. 
+    
