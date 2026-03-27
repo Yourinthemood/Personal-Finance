@@ -2,7 +2,18 @@
 
 CLASS tools: 
     ATTRIBUTES:
+        cash
         cash_type
-        Budget
+        budget
+        saving_goal
+        interest
+        comp_interest
         etc. 
-    
+
+    METHOD __init__(cash_type, budget, saving_goal, interest, comp_interest): 
+        cash = 0
+        cash_type = "US Dollar"
+        budget = 0
+        saving_goal = 0
+        interest = 0
+        comp_interest = 0
