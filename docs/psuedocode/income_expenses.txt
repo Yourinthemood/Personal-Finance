@@ -1,0 +1,11 @@
+define new_income function with no parameters
+    find the date with module time and save it as a variable
+    ask the user for the amount that they made in income
+    ask the user to select a source (ex. First Job, Second Job, Other, etc)
+    append all the above information as a list into the income csv
+
+define new_expenses function with no parameters
+    find the date with module time and save it as a variable
+    ask the user for the amount that they expended
+    ask the user to select a category (ex. Groceries, Transportation, Other, etc)
+    append all the above information as a list into the expenses csv

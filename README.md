@@ -1,5 +1,5 @@
 
-# Name of your project
+# Personal Finances
 ***
 ![Image of the code while running](location of image in folders)
 Paragraph discription of your project
@@ -14,17 +14,16 @@ Paragraph discription of your project
 ***
 - ALL key features in your repository with a detailed discription
 - This is a list frequently will include emojis
-
-## Instalation Instructions 
+🎮🏆🎯💾📀💵 
+## Installation Instructions 
 Notes being used in this class BUT if you have a full run file (.exe) for your project, this is where setup instructions go! 
 
 ## Licence
 ***
-Anything made for school has bo copyright
+No licence as this is made for a school project. Feel free to use as you would like.
 
 ## Contributers
-- github usernames for ALL members of the group
-
-## Contribute
-***
-Not being used for this class. Instructions for how to submit a change to the repository if it is open source.  
+- DigitalRage
+- futashikana (JS-CP1)
+- Yourinthemood
+- titaniumlizard445
