@@ -1,0 +1,39 @@
+#CP2 Group Project 3 
+#Import all other files in src except JSON_management
+
+#main function
+  #DISPLAY custom tkinter login screen GUI
+  #Log in screen will have an option to log in to an existing account or an option to create a new account
+  
+  #if the user clicks the New account button:
+    #trigger create new account function
+ 
+  #if the user clicks the Log in button:
+    #trigger the log in function
+
+  #Once the User has Logged in or Created a Account:
+  #(While Logged in):
+    #Welcome User to main program and DISPLAY buttons for the folowing:
+      #Budgeting tools and viewing money
+      #Display Pie Chart
+      #New Income Entry
+      #New Expense Entry
+      #Convert to Different Currency
+      #Display Line Graph
+      #Quit Program
+
+    #Match the user's click with the following:
+      #if clicked Budgeting Tools:
+        #trigger Budgeting Tools Menu Function
+      #if clicked Display Pie Chart:
+        #trigger Pie Chart Function
+      #if clicked New Income:
+        #trigger New Income Function
+      #if clicked New Expense:
+        #trigger New Expense Function
+      #if clicked Convert to Different Currency:
+        #trigger Convert to Dif. Currency Function
+      #if clicked Display Line Graph
+        #trigger Line Graph Function
+      #if Quit Program clicked
+        #Break Out of While Loop and display Leaving Message
