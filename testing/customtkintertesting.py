@@ -16,9 +16,9 @@ class App(customtkinter.CTk):
             master=self,
             text=name,
             command=lambda: print("Button clicked"),
-            width=10000,
+            width=100,
             height=50,
-            border_width=200,
+            border_width=20,
             corner_radius=2,
             hover=True
         )
