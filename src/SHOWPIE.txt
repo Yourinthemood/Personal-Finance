@@ -1,0 +1,18 @@
+
+# PROGRAM LineGraphApp
+
+# IMPORT pandas and matplotlib
+
+# READ balances.csv file
+
+# GET dates and balances columns
+
+# GET last 10 entries
+
+# PLOT dates on x and balances on y
+
+# ADD title, x label, y label
+
+# SHOW graph
+
+# END
