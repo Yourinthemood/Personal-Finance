@@ -1,1 +1,16 @@
 
+
+# GET CSV file with USD dollar values
+
+# STORE current values in list
+
+# ASK user if they want to convert to different currency
+
+# IF yes:
+    # USE conversion table to convert USD to other currency
+    # ADD new converted values to dictionary
+    # ASK user if done?
+    
+# IF no or done:
+    # CONVERT values back to USD if needed
+    # SAVE dictionary to CSV file
