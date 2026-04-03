@@ -1,6 +1,8 @@
 #CP2 Project 3
 
 #Sign up function:
+def signup():
+    pass
   #Loop until User Gets Unique Password
     #Display a Field for the User to type in which has a caption above it titled: Username. Below that, Have an Enter Button to submit what they have in the field
 

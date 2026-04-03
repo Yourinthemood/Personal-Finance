@@ -39,7 +39,7 @@ btn.pack(pady=20)
 
 
 entry = customtkinter.CTkEntry(
-    master=app,
+    master=frame,
     placeholder_text="Type something...",
     width=200,
     height=30,
@@ -53,7 +53,7 @@ def get_text():
     text = entry.get()
     print(f"Entry contains: {text}")
 
-get_button = customtkinter.CTkButton(master=app, text="Get Text", command=get_text)
+get_button = customtkinter.CTkButton(master=frame, text="Get Text", command=get_text)
 get_button.pack(pady=5)
 
 
