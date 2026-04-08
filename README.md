@@ -1,20 +1,21 @@
 
-# Personal Finances
+# Personal Finances (NOT FINISHED)
 ***
 ![Image of the code while running](location of image in folders)
 Paragraph discription of your project
 
 ## How to use
 ***
-1. Spep by step instructions
-2. Detailing how to run your project
-3. Including a list of any libraries that need downloaded!
+1. Install customtkinter
+2. Install tkextrafont
+3. Install pygame
 
 ## Details on Project features
 ***
 - ALL key features in your repository with a detailed discription
 - This is a list frequently will include emojis
 🎮🏆🎯💾📀💵 
+
 ## Installation Instructions 
 Notes being used in this class BUT if you have a full run file (.exe) for your project, this is where setup instructions go! 
 
