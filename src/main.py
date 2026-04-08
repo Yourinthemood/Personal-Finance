@@ -1,12 +1,16 @@
 #CP2 Group Project 3 
 #Import all other files in src except JSON_management
 import styles, login, signup
-import customtkinter as ctk
-import pygame
+import customtkinter as ctk, pygame, os
 
 pygame.mixer.init()
-pygame.mixer.music.load("Personal-Finance/music.mp3")
+try:
+  pygame.mixer.music.load("Personal-Finance/music.mp3")
+except:
+  pygame.mixer.music.load("music.mp3")
 pygame.mixer.music.play(loops=-1)
+os.system("cls")
+print("THIS PROJECT IS BUILT FOR A MONITOR WITH 2560x1400px, OTHERWISE IT LOOKS WEIRD!")
 
 #main function
 def main():

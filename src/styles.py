@@ -6,11 +6,17 @@ from tkextrafont import Font
 values = {"grey": "#35393C", "linen": "#F2E9DC", "strawberry": "#E34850", "blue": "#727FC8", "green": "#709775"}
 def from_rgb(rgb):
     return "#%02x%02x%02x" % rgb
-
+_font_loaded_roots = set()
+def load_font(root):
+    root_id = id(root)
+    if root_id not in _font_loaded_roots:
+        Font(file="docs/images/Dongle-Bold.ttf", family="Dongle", root=root)
+        _font_loaded_roots.add(root_id)
 
 class Foreground:
     def __init__(self, root):
         self.root = root
+        load_font(root)
         self.foreground = ctk.CTkFrame(
             master=root,
             border_width=10,
@@ -54,7 +60,8 @@ class TextBox:
             fg_color=values["linen"],
             border_color=from_rgb((0,0,0)),
             placeholder_text=text,
-            text_color=from_rgb((0,0,0))
+            text_color=from_rgb((0,0,0)),
+            font=("Dongle", 32)
         )
         self.sizex=sizex
         self.sizey=sizey
@@ -79,7 +86,8 @@ class BlueButton:
             border_color="#212121",
             fg_color=values["blue"],
             text=text,
-            command=command
+            command=command,
+            font=("Dongle", 32)
         )
         self.sizex = sizex
         self.sizey = sizey
@@ -101,7 +109,8 @@ class GreenButton:
             border_color="#212121",
             fg_color=values["green"],
             text=text,
-            command=command
+            command=command,
+            font=("Dongle", 32)
         )
         self.sizex = sizex
         self.sizey = sizey
@@ -144,14 +153,16 @@ class RedX:
 
 
 class SumbitButton:
-    def __init__(self, foreground, command, sizex, sizey, color):
+    def __init__(self, foreground, command, color, sizex=200, sizey=100):
         self.submit = ctk.CTkButton(
             master=foreground,
-            border_width=2,
+            border_width=5,
+            corner_radius=15,
             border_color=from_rgb((0,0,0)),
             text="Submit",
             fg_color=from_rgb(color),
-            command=command
+            command=command,
+            font=("Dongle", 32)
         )
         self.sizex=sizex
         self.sizey=sizey
@@ -167,7 +178,7 @@ class OutputBox:
         self.text = ctk.CTkLabel(
             master=titleframe,
             text="Personal Finance App",
-            font=("Arial", 100),
+            font=("Dongle", 100),
             text_color="#212121"
         )
 

@@ -40,7 +40,7 @@ def main_menu():
 
 
     x = styles.RedX(foreground.foreground, root)
-    x.show(1650,150)
+    x.show()
     
 
     root.mainloop()

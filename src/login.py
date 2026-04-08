@@ -1,11 +1,6 @@
 #CP2 Project 3 Financial Calculations, Login Function
 import styles, JSON_management, main_menu
 import customtkinter as ctk
-import pygame
-
-#pygame.mixer.init()
-#pygame.mixer.music.load("music.mp3")
-#pygame.mixer.music.play(loops=-1)
 
 #Login Function:
 def log_in():
@@ -30,7 +25,7 @@ def log_in():
     password_box = styles.TextBox(foreground.foreground, "Password: ")
     password_box.show(800,800)
 
-    submit_button = styles.SumbitButton(foreground.foreground,lambda: print(f"{username_box.get_text()}:{password_box.get_text()}"), sizex=100, sizey=50, color=(200,200,255))
+    submit_button = styles.SumbitButton(foreground.foreground,lambda: main_menu.main_menu(), color=(200,200,255))
     submit_button.show(x=1500, y=700)
 
     root.mainloop()

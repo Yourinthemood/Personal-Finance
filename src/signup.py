@@ -1,8 +1,6 @@
 #CP2 Project 3
 import styles, JSON_management, main_menu
 import customtkinter as ctk
-import pygame
-
 
 #Sign up function:
 def signup():
@@ -25,7 +23,7 @@ def signup():
     password_box = styles.TextBox(foreground.foreground, "Password: ")
     password_box.show(800,800)
 
-    submit_button = styles.SumbitButton(foreground.foreground, lambda: print(f"{username_box.get_text}:{password_box.get_text}"), sizex=200, sizey=100, color=(200,200,255))
+    submit_button = styles.SumbitButton(foreground.foreground, lambda: main_menu.main_menu(), color=(200,200,255))
     submit_button.show(x=1500, y=700)
 
     root.mainloop()
