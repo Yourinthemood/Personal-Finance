@@ -24,7 +24,7 @@ class Foreground:
 
 
 class TitleBoxText:
-    def __init__(self, foreground, sizex=1460, sizey=100):
+    def __init__(self, foreground, sizex=2100, sizey=125):
         self.title = ctk.CTkFrame(
             master=foreground,
             width=sizex,
@@ -37,26 +37,31 @@ class TitleBoxText:
         self.sizex = sizex
         self.sizey = sizey
         
-    def show(self, x=800, y=100):
+    def show(self, x=1150, y=100):
         self.title.place(x=x, y=y, anchor="center")
         self.title.configure(width=self.sizex, height=self.sizey)
         self.title.propagate(False)
 
+
 class TextBox:
-    def __init__(self, foreground, text):
+    def __init__(self, foreground, text, sizex=1000, sizey=100):
         self.text_box = ctk.CTkEntry(
             master=foreground,
-            width=200,
-            height=50,
-            border_width=10,
-            corner_radius=5,
+            width=sizex,
+            height=sizey,
+            border_width=5,
+            corner_radius=10,
             fg_color=values["linen"],
-            placeholder_text=text
+            border_color=from_rgb((0,0,0)),
+            placeholder_text=text,
+            text_color=from_rgb((0,0,0))
         )
+        self.sizex=sizex
+        self.sizey=sizey
     
-    def show(self,x,y):
-        self.text_box.place(x=x,y=y, anchor="center")
-        self.text_box.configure(width=200,height=50)
+    def show(self, x, y):
+        self.text_box.place(x=x, y=y, anchor="center")
+        self.text_box.configure(width=self.sizex, height=self.sizey)
         self.text_box.propagate(False)
     
     def get_text(self):
@@ -112,7 +117,7 @@ class RedX:
         self.foreground = foreground
         self.root = root
     
-    def show(self, x, y):
+    def show(self, x=2300, y=150):
         canvas = ctk.CTkCanvas(self.foreground, width=150, height=150, bg=values["linen"], highlightthickness=0)
         
         def on_click(event):
@@ -139,13 +144,13 @@ class RedX:
 
 
 class SumbitButton:
-    def __init__(self, foreground, command, sizex, sizey):
+    def __init__(self, foreground, command, sizex, sizey, color):
         self.submit = ctk.CTkButton(
             master=foreground,
             border_width=2,
             border_color=from_rgb((0,0,0)),
-            fg_color=values["linen"],
             text="Submit",
+            fg_color=from_rgb(color),
             command=command
         )
         self.sizex=sizex
@@ -159,11 +164,10 @@ class SumbitButton:
 
 class OutputBox:
     def __init__(self, titleframe):
-        Font(file="docs/images/Dongle-Bold.ttf", family="Dongle")
         self.text = ctk.CTkLabel(
             master=titleframe,
             text="Personal Finance App",
-            font=("Dongle", 100),
+            font=("Arial", 100),
             text_color="#212121"
         )
 

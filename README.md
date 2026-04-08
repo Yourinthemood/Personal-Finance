@@ -9,6 +9,7 @@ Paragraph discription of your project
 1. Install customtkinter
 2. Install tkextrafont
 3. Install pygame
+4. Install pygame-ce
 
 ## Details on Project features
 ***

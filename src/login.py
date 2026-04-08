@@ -3,9 +3,9 @@ import styles, JSON_management, main_menu
 import customtkinter as ctk
 import pygame
 
-pygame.mixer.init()
-pygame.mixer.music.load("music.mp3")
-pygame.mixer.music.play(loops=-1)
+#pygame.mixer.init()
+#pygame.mixer.music.load("music.mp3")
+#pygame.mixer.music.play(loops=-1)
 
 #Login Function:
 def log_in():
@@ -19,19 +19,19 @@ def log_in():
     foreground.show()
 
     x = styles.RedX(foreground.foreground, root)
-    x.show(1650,150)
+    x.show()
 
     titleframe = styles.TitleBoxText(foreground.foreground)
     titleframe.show()
 
     username_box = styles.TextBox(foreground.foreground,"Username: ")
-    username_box.show(700,500)
+    username_box.show(800,600)
 
     password_box = styles.TextBox(foreground.foreground, "Password: ")
-    password_box.show(700,500)
+    password_box.show(800,800)
 
-    submit_button = styles.SumbitButton(foreground.foreground,lambda: print(f"{username_box.get_text()}:{password_box.get_text()}"), sizex=100, sizey=50)
-    submit_button.show(x=1000,y=100)
+    submit_button = styles.SumbitButton(foreground.foreground,lambda: print(f"{username_box.get_text()}:{password_box.get_text()}"), sizex=100, sizey=50, color=(200,200,255))
+    submit_button.show(x=1500, y=700)
 
     root.mainloop()
 
