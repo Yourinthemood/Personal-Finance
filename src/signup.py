@@ -3,9 +3,6 @@ import styles, JSON_management, main_menu
 import customtkinter as ctk
 import pygame
 
-#pygame.mixer.init()
-#pygame.mixer.music.load("music.mp3")
-#pygame.mixer.music.play(loops=-1)
 
 #Sign up function:
 def signup():
@@ -16,7 +13,7 @@ def signup():
     foreground = styles.Foreground(root)
     foreground.show()
 
-    titleframe = styles.TitleBoxText(foreground.foreground)
+    titleframe = styles.TitleBoxText(foreground.foreground)#You need some tacos to feel better!!!
     titleframe.show()
 
     x = styles.RedX(foreground.foreground, root)
