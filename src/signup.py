@@ -1,8 +1,37 @@
 #CP2 Project 3
+import styles, JSON_management, main_menu
+import customtkinter as ctk
+import pygame
+
+pygame.mixer.init()
+pygame.mixer.music.load("music.mp3")
+pygame.mixer.music.play(loops=-1)
 
 #Sign up function:
 def signup():
-    pass
+    root = ctk.CTk()
+    root.geometry("2560x1440+0+0")
+    ctk.set_appearance_mode("dark")
+
+    foreground = styles.Foreground(root)
+    foreground.show()
+
+    titleframe = styles.TitleBoxText(foreground.foreground)
+    titleframe.show()
+
+    x = styles.RedX(foreground.foreground, root)
+    x.show(1650,150)
+
+    username_box = styles.TextBox(foreground,"Username: ")
+    username_box.show(700,500)
+
+    password_box = styles.TextBox(foreground, "Password: ")
+    password_box.show(900,500)
+
+    submit_button = styles.SumbitButton(foreground, lambda: print(f"{username_box.get_text()}:{password_box.get_text()}"), sizex=200, sizey=100)
+    submit_button.show(x=100, y=100)
+
+    root.mainloop()
   #Loop until User Gets Unique Password
     #Display a Field for the User to type in which has a caption above it titled: Username. Below that, Have an Enter Button to submit what they have in the field
 

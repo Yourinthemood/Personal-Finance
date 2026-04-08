@@ -1,11 +1,11 @@
 #CP2 Group Project 3 
 #Import all other files in src except JSON_management
-import piecharts, styles
+import piecharts, styles, login, signup
 import customtkinter as ctk
 import pygame
 
 pygame.mixer.init()
-pygame.mixer.music.load("Flowers Parody _ David Lopez 4.mp3")
+pygame.mixer.music.load("music.mp3")
 pygame.mixer.music.play(loops=-1)
 
 #main function
@@ -26,47 +26,19 @@ def main():
   title = styles.OutputBox(titleframe.title)
   title.show()
 
-  x = styles.RedX(foreground.foreground, command=lambda: print("Quit clicked"))
-  x.show()
+  x = styles.RedX(foreground.foreground, root)
+  x.show(1650,150)
   
   #if the user clicks the New account button:
     #trigger create new account function
-  login_btn = styles.BlueButton(foreground.foreground, "Log In", command=lambda: print("Log in clicked"))
-  login_btn.show()
+  login_btn = styles.BlueButton(foreground.foreground, "Log In", command=login.log_in, sizex=500, sizey=200)
+  login_btn.show(600,500)
  
   #if the user clicks the Log in button:
     #trigger the log in function
-  signup_btn = styles.GreenButton(foreground.foreground, "New Account", command=lambda: print("Sign up clicked"))
-  signup_btn.show()
+  signup_btn = styles.GreenButton(foreground.foreground, "New Account", command=signup.signup, sizex=500, sizey=200)
+  signup_btn.show(1200,500)
 
   root.mainloop()
 
-  #Once the User has Logged in or Created a Account:
-  #(While Logged in):
-    #Welcome User to main program and DISPLAY buttons for the following:
-      #Budgeting tools and viewing money
-      #Display Pie Chart
-      #New Income Entry
-      #New Expense Entry
-      #Convert to Different Currency
-      #Display Line Graph
-      #Quit Program 
-
-    #Match the user's click with the following:
-      #if clicked Budgeting Tools:
-        #trigger Budgeting Tools Menu Function
-      #if clicked Display Pie Chart:
-        #trigger Pie Chart Function
-      #if clicked New Income:
-        #trigger New Income Function
-      #if cicked New Expense:
-        #trligger New Expense Function
-      #if clicked Convert to Different Currency:
-        #trigger Convert to Dif. Currency Function
-      #if clicked Display Line Graph
-        #trigger Line Graph Function
-      #if clicked Quit Program 
-        #Break Out of While Loop and display Leaving Message
-      
-if __name__ == "__main__": 
-    main()
+main()

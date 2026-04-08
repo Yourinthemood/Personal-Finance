@@ -7,6 +7,7 @@ values = {"grey": "#35393C", "linen": "#F2E9DC", "strawberry": "#E34850", "blue"
 def from_rgb(rgb):
     return "#%02x%02x%02x" % rgb
 
+
 class Foreground:
     def __init__(self, root):
         self.root = root
@@ -23,32 +24,51 @@ class Foreground:
 
 
 class TitleBoxText:
-    def __init__(self, foreground):
+    def __init__(self, foreground, sizex=1460, sizey=100):
         self.title = ctk.CTkFrame(
             master=foreground,
+            width=sizex,
+            height=sizey,
             border_width=8,
             corner_radius=25,
             fg_color=values["strawberry"],
             border_color=from_rgb((255, 200, 200))
         )
+        self.sizex = sizex
+        self.sizey = sizey
         
-    def show(self):
-        self.title.pack(pady=75, padx=100, fill="x", expand=False)
+    def show(self, x=800, y=100):
+        self.title.place(x=x, y=y, anchor="center")
+        self.title.configure(width=self.sizex, height=self.sizey)
+        self.title.propagate(False)
 
 class TextBox:
-    def __init__(self, text):
-        self.text = text
+    def __init__(self, foreground, text):
+        self.text_box = ctk.CTkEntry(
+            master=foreground,
+            width=200,
+            height=50,
+            border_width=10,
+            corner_radius=5,
+            fg_color=values["linen"],
+            placeholder_text=text
+        )
     
-    def show(self):
-        pass
+    def show(self,x,y):
+        self.text_box.place(x=x,y=y, anchor="center")
+        self.text_box.configure(width=200,height=50)
+        self.text_box.propagate(False)
+    
+    def get_text(self):
+        return self.text_box.get()
 
 
 class BlueButton:
-    def __init__(self, foreground, text, command):
+    def __init__(self, foreground, text, command, sizex=1000, sizey=100):
         self.blue_button = ctk.CTkButton(
             master=foreground,
-            width=1000,
-            height=100,
+            width=sizex,
+            height=sizey,
             border_width=10,
             corner_radius=25,
             border_color="#212121",
@@ -56,17 +76,21 @@ class BlueButton:
             text=text,
             command=command
         )
+        self.sizex = sizex
+        self.sizey = sizey
     
-    def show(self):
-        self.blue_button.pack(pady=25)
+    def show(self, x, y):
+        self.blue_button.place(x=x, y=y, anchor="center")
+        self.blue_button.configure(width=self.sizex, height=self.sizey)
+        self.blue_button.propagate(False)
 
 
 class GreenButton:
-    def __init__(self, foreground, text, command):
+    def __init__(self, foreground, text, command, sizex, sizey):
         self.green_button = ctk.CTkButton(
             master=foreground,
-            width=1000,
-            height=100,
+            width=sizex,
+            height=sizey,
             border_width=10,
             corner_radius=25,
             border_color="#212121",
@@ -74,36 +98,27 @@ class GreenButton:
             text=text,
             command=command
         )
+        self.sizex = sizex
+        self.sizey = sizey
 
-    def show(self):
-        self.green_button.pack(pady=25)    
+    def show(self, x, y):
+        self.green_button.place(x=x, y=y, anchor="center")  
+        self.green_button.configure(width=self.sizex, height=self.sizey)
+        self.green_button.propagate(False)
 
 
 class RedX:
-    def __init__(self, foreground, command):
-        self.exit_button = ctk.CTkButton(
-            master=foreground,
-            border_width=2,
-            border_color=from_rgb((25,0,0)),
-            fg_color=values["strawberry"],
-            command=command
-        )
+    def __init__(self, foreground, root):
         self.foreground = foreground
+        self.root = root
     
-    
-    def show(self):
+    def show(self, x, y):
         canvas = ctk.CTkCanvas(self.foreground, width=150, height=150, bg=values["linen"], highlightthickness=0)
         
         def on_click(event):
-            print("X clicked!")
+            self.root.destroy()
 
-        def on_enter(event):
-            event.widget.configure(bg="#555555")
-
-        def on_leave(event):
-            event.widget.configure(bg="darkgrey")
-
-        canvas.pack()
+        canvas.place(x=x, y=y, anchor="center")
 
         border_width = 50
         inner_width = 30
@@ -121,14 +136,10 @@ class RedX:
         canvas.create_line(*line2_coords, fill=inner_color, width=inner_width, capstyle="round")
         
         canvas.bind("<Button-1>", on_click)
-        canvas.bind("<Enter>", on_enter)
-        canvas.bind("<Leave>", on_leave)
-
-        self.exit_button.pack(pady=10)
 
 
 class SumbitButton:
-    def __init__(self, foreground, command):
+    def __init__(self, foreground, command, sizex, sizey):
         self.submit = ctk.CTkButton(
             master=foreground,
             border_width=2,
@@ -137,14 +148,18 @@ class SumbitButton:
             text="Submit",
             command=command
         )
+        self.sizex=sizex
+        self.sizey=sizey
     
-    def show(self):
-        self.submit.pack(pady=20)
+    def show(self, x, y):
+        self.submit.place(x=x, y=y, anchor="center")  
+        self.submit.configure(width=self.sizex, height=self.sizey)
+        self.submit.propagate(False)
 
 
 class OutputBox:
     def __init__(self, titleframe):
-        text = Font(file="docs/images/Dongle-Bold.ttf", family="Dongle")
+        Font(file="docs/images/Dongle-Bold.ttf", family="Dongle")
         self.text = ctk.CTkLabel(
             master=titleframe,
             text="Personal Finance App",
