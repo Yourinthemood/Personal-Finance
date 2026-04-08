@@ -4,9 +4,9 @@ import styles, login, signup
 import customtkinter as ctk
 import pygame
 
-pygame.mixer.init()
-pygame.mixer.music.load("Personal-Finance/music.mp3")
-pygame.mixer.music.play(loops=-1)
+#pygame.mixer.init()
+#pygame.mixer.music.load("Personal-Finance/music.mp3")
+#pygame.mixer.music.play(loops=-1)
 
 #main function
 def main():
