@@ -6,6 +6,29 @@ from tkextrafont import Font
 
 # Load colors
 values = {"grey": "#35393C", "linen": "#F2E9DC", "strawberry": "#E34850", "blue": "#727FC8", "green": "#709775"}
+selected_mode = "fullscreen"
+if selected_mode == "1440p":
+    scale_x = 1.0
+    scale_y = 1.0
+elif selected_mode == "1080p":
+    scale_x = 1920 / 2560  # 0.75
+    scale_y = 1080 / 1440  # 0.75
+elif selected_mode == "fullscreen":
+    scale_x = 1.0
+    scale_y = 1.0
+
+def update_scales():
+    global scale_x, scale_y
+    if selected_mode == "1440p":
+        scale_x = 1.0
+        scale_y = 1.0
+    elif selected_mode == "1080p":
+        scale_x = 1920 / 2560
+        scale_y = 1080 / 1440
+    elif selected_mode == "fullscreen":
+        scale_x = 1.0
+        scale_y = 1.0
+
 def from_rgb(rgb):
     return "#%02x%02x%02x" % rgb
 
@@ -48,8 +71,8 @@ class TitleBoxText:
         self.sizey = sizey
         
     def show(self, x=1150, y=100):
-        self.title.place(x=x, y=y, anchor="center")
-        self.title.configure(width=self.sizex, height=self.sizey)
+        self.title.place(x=int(x * scale_x), y=int(y * scale_y), anchor="center")
+        self.title.configure(width=int(self.sizex * scale_x), height=int(self.sizey * scale_y))
         self.title.propagate(False)
 
 
@@ -71,8 +94,8 @@ class TextBox:
         self.sizey=sizey
     
     def show(self, x, y):
-        self.text_box.place(x=x, y=y, anchor="center")
-        self.text_box.configure(width=self.sizex, height=self.sizey)
+        self.text_box.place(x=int(x * scale_x), y=int(y * scale_y), anchor="center")
+        self.text_box.configure(width=int(self.sizex * scale_x), height=int(self.sizey * scale_y))
         self.text_box.propagate(False)
     
     def get_text(self):
@@ -97,8 +120,8 @@ class BlueButton:
         self.sizey = sizey
     
     def show(self, x, y):
-        self.blue_button.place(x=x, y=y, anchor="center")
-        self.blue_button.configure(width=self.sizex, height=self.sizey)
+        self.blue_button.place(x=int(x * scale_x), y=int(y * scale_y), anchor="center")
+        self.blue_button.configure(width=int(self.sizex * scale_x), height=int(self.sizey * scale_y))
         self.blue_button.propagate(False)
 
 
@@ -120,8 +143,8 @@ class GreenButton:
         self.sizey = sizey
 
     def show(self, x, y):
-        self.green_button.place(x=x, y=y, anchor="center")  
-        self.green_button.configure(width=self.sizex, height=self.sizey)
+        self.green_button.place(x=int(x * scale_x), y=int(y * scale_y), anchor="center")  
+        self.green_button.configure(width=int(self.sizex * scale_x), height=int(self.sizey * scale_y))
         self.green_button.propagate(False)
 
 
@@ -131,21 +154,21 @@ class RedX:
         self.root = root
     
     def show(self, x=2300, y=150):
-        canvas = ctk.CTkCanvas(self.foreground, width=150, height=150, bg=values["linen"], highlightthickness=0)
+        canvas = ctk.CTkCanvas(self.foreground, width=int(150 * scale_x), height=int(150 * scale_y), bg=values["linen"], highlightthickness=0)
         
         def on_click(event):
             self.root.destroy()
 
-        canvas.place(x=x, y=y, anchor="center")
+        canvas.place(x=int(x * scale_x), y=int(y * scale_y), anchor="center")
 
-        border_width = 50
-        inner_width = 30
+        border_width = int(50 * scale_x)
+        inner_width = int(30 * scale_x)
         
         border_color = from_rgb((255, 200, 200))
         inner_color = values["strawberry"]
 
-        line1_coords = (125, 125, 25, 25) 
-        line2_coords = (25, 125, 125, 25) 
+        line1_coords = (int(125 * scale_x), int(125 * scale_y), int(25 * scale_x), int(25 * scale_y)) 
+        line2_coords = (int(25 * scale_x), int(125 * scale_y), int(125 * scale_x), int(25 * scale_y)) 
 
         canvas.create_line(*line1_coords, fill=border_color, width=border_width, capstyle="round")
         canvas.create_line(*line2_coords, fill=border_color, width=border_width, capstyle="round")
@@ -172,8 +195,8 @@ class SumbitButton:
         self.sizey=sizey
     
     def show(self, x, y):
-        self.submit.place(x=x, y=y, anchor="center")  
-        self.submit.configure(width=self.sizex, height=self.sizey)
+        self.submit.place(x=int(x * scale_x), y=int(y * scale_y), anchor="center")  
+        self.submit.configure(width=int(self.sizex * scale_x), height=int(self.sizey * scale_y))
         self.submit.propagate(False)
 
 

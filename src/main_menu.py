@@ -2,11 +2,16 @@
 import styles, income_expenses, budgeting_tools
 import customtkinter as ctk
 
-def main_menu():
+def main_menu(mode):
     #Once the User has Logged in or Created a Account:
     #(While Logged in):
     root = ctk.CTk()
-    root.geometry("2560x1440+0+0")
+    if mode == "1440p":
+      root.geometry("2560x1440+0+0")
+    elif mode == "1080p":
+      root.geometry("1920x1080+0+0")
+    elif mode == "fullscreen":
+      root.attributes("-fullscreen", True)
     ctk.set_appearance_mode("dark")
 
     #Welcome User to main program and DISPLAY buttons for the following:
@@ -40,7 +45,7 @@ def main_menu():
 
     #if clicked Budgeting Tools:
         #trigger Budgeting Tools Menu Function
-    budget = styles.BlueButton(foreground.foreground,"Budgeting tools",command=lambda: budgeting_tools.budgeting_tools(),sizex=300,sizey=100)
+    budget = styles.BlueButton(foreground.foreground,"Budgeting tools",command=lambda: budgeting_tools.budgeting_tools(mode),sizex=300,sizey=100)
     budget.show(800,400)
 
     #if clicked Convert to Different Currency:
@@ -50,12 +55,12 @@ def main_menu():
 
     #if clicked New Income:
         #trigger New Income Function
-    income = styles.BlueButton(foreground.foreground,"New Income",command=lambda: income_expenses.income(),sizex=300,sizey=100)
+    income = styles.BlueButton(foreground.foreground,"New Income",command=lambda: income_expenses.income(mode),sizex=300,sizey=100)
     income.show(1200,400)
 
     #if cicked New Expense:
         #trigger New Expense Function
-    expense = styles.BlueButton(foreground.foreground,"New Expense",command=lambda: income_expenses.expenses(),sizex=300,sizey=100)
+    expense = styles.BlueButton(foreground.foreground,"New Expense",command=lambda: income_expenses.expenses(mode),sizex=300,sizey=100)
     expense.show(1200,600)
 
 

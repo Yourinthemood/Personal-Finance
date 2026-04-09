@@ -3,11 +3,16 @@ import styles, JSON_management, main_menu
 import customtkinter as ctk
 
 #Login Function:
-def log_in():
+def log_in(mode):
   #loop until login complete:
     #Display a Log in screen that has two text box fields labeled Username and Password Respectively. After those have a Enter or submit buttont to send info here
     root = ctk.CTk()
-    root.geometry("2560x1440+0+0")
+    if mode == "1440p":
+      root.geometry("2560x1440+0+0")
+    elif mode == "1080p":
+      root.geometry("1920x1080+0+0")
+    elif mode == "fullscreen":
+      root.attributes("-fullscreen", True)
     ctk.set_appearance_mode("dark")
 
     foreground = styles.Foreground(root)
@@ -28,7 +33,7 @@ def log_in():
     password_box = styles.TextBox(foreground.foreground, "Password: ")
     password_box.show(800,800)
 
-    submit_button = styles.SumbitButton(foreground.foreground,lambda: main_menu.main_menu(), color=(200,200,255))
+    submit_button = styles.SumbitButton(foreground.foreground,lambda: main_menu.main_menu(mode), color=(200,200,255))
     submit_button.show(x=1500, y=700)
 
     root.mainloop()

@@ -1,9 +1,14 @@
 import customtkinter as ctk
 import styles
 
-def income():
+def income(mode):
     root = ctk.CTk()
-    root.geometry("2560x1440+0+0")
+    if mode == "1440p":
+      root.geometry("2560x1440+0+0")
+    elif mode == "1080p":
+      root.geometry("1920x1080+0+0")
+    elif mode == "fullscreen":
+      root.attributes("-fullscreen", True)
     ctk.set_appearance_mode("dark")
     
     foreground = styles.Foreground(root)
@@ -29,9 +34,14 @@ def income():
 
     root.mainloop()
 
-def expenses():
+def expenses(mode):
     root = ctk.CTk()
-    root.geometry("2560x1440+0+0")
+    if mode == "1440p":
+      root.geometry("2560x1440+0+0")
+    elif mode == "1080p":
+      root.geometry("1920x1080+0+0")
+    elif mode == "fullscreen":
+      root.attributes("-fullscreen", True)
     ctk.set_appearance_mode("dark")
     
     foreground = styles.Foreground(root)
