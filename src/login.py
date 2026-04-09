@@ -33,7 +33,7 @@ def log_in(mode):
     password_box = styles.TextBox(foreground.foreground, "Password: ")
     password_box.show(800,800)
 
-    submit_button = styles.SumbitButton(foreground.foreground,lambda: main_menu.main_menu(mode), color=(200,200,255))
+    submit_button = styles.SumbitButton(foreground.foreground,lambda: main_menu.main_menu(mode))
     submit_button.show(x=1500, y=700)
 
     root.mainloop()
