@@ -45,7 +45,7 @@ def main_menu(mode):
 
     #if clicked Budgeting Tools:
         #trigger Budgeting Tools Menu Function
-    budget = styles.BlueButton(foreground.foreground,"Budgeting tools",command=lambda: budgeting_tools.budgeting_tools(mode),sizex=300,sizey=100)
+    budget = styles.BlueButton(foreground.foreground,"Budgeting tools",command=lambda: budgeting_tools.budgeting_tools(mode),sizex=350,sizey=100)
     budget.show(800,400)
 
     #if clicked Convert to Different Currency:

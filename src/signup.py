@@ -4,6 +4,9 @@ import customtkinter as ctk
 
 #Sign up function:
 def signup(mode):
+    def send():
+      root.destroy()
+      main_menu.main_menu(mode)
     root = ctk.CTk()
     if mode == "1440p":
       root.geometry("2560x1440+0+0")
@@ -31,7 +34,7 @@ def signup(mode):
     password_box = styles.TextBox(foreground.foreground, "Password: ")
     password_box.show(800,800)
 
-    submit_button = styles.SumbitButton(foreground.foreground, lambda: main_menu.main_menu(mode))
+    submit_button = styles.SumbitButton(foreground.foreground,lambda: send())
     submit_button.show(x=1500, y=700)
 
     root.mainloop()

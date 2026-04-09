@@ -25,14 +25,21 @@ def savings_calc(mode):
   x = styles.RedX(foreground.foreground, root)
   x.show()
 
-  name = styles.TextBox(foreground.foreground, "Name of Goal: ")
-  name.show(800,600)
 
-  end = styles.TextBox(foreground.foreground, "End Goal: ")
-  end.show(800,800)
+  name = styles.TextBox(foreground.foreground, "Name of Goal: ", sizex=1500)
+  name.show(900,400)
+
+  end = styles.TextBox(foreground.foreground, "End Goal: ", sizex=1500)
+  end.show(900,700)
   
-  months = styles.TextBox(foreground.foreground, "How many months will this money be saved for: ")
-  months.show(800,1000)
+  months = styles.TextBox(foreground.foreground, "How many months: ", sizex=1500)
+  months.show(900,1000)
+
+
+  output = styles.OutputFrame(foreground.foreground, sizex=500, sizey=500)
+  output.show(2100, 700)
+
+  #text = styles.OutputBox()
 
   root.mainloop()
 
@@ -163,17 +170,17 @@ def compound_calc(mode):
   x.show()
 
 
-  starting = styles.TextBox(foreground.foreground, "Starting Amount: ")
-  starting.show(800,600)
+  starting = styles.TextBox(foreground.foreground, "Starting Amount: ", sizex=1500)
+  starting.show(1000,400)
 
-  rate = styles.TextBox(foreground.foreground, "Interest Rate: ")
-  rate.show(800,800)
+  rate = styles.TextBox(foreground.foreground, "Interest Rate: ", sizex=1500)
+  rate.show(1000,600)
   
-  months = styles.TextBox(foreground.foreground, "How Long in Months: ")
-  months.show(800,1000)
+  months = styles.TextBox(foreground.foreground, "How Long in Months: ", sizex=1500)
+  months.show(1000,800)
 
-  per = styles.TextBox(foreground.foreground, "Amount Added Per Month: ")
-  per.show(800,1200)
+  per = styles.TextBox(foreground.foreground, "Amount Added Per Month: ", sizex=1500)
+  per.show(1000,1000)
 
   root.mainloop()
 

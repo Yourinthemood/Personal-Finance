@@ -33,17 +33,17 @@ def from_rgb(rgb):
     return "#%02x%02x%02x" % rgb
 
 # Load fonts
-_font_loaded_roots = set()
-def load_font(root):
-    root_id = id(root)
-    if root_id not in _font_loaded_roots:
-        Font(file="docs/images/Dongle-Bold.ttf", family="Dongle", root=root)
-        _font_loaded_roots.add(root_id)
+#_font_loaded_roots = set()
+#def load_font(root):
+#    root_id = id(root)
+#    if root_id not in _font_loaded_roots:
+#        Font(file="docs/images/Dongle-Bold.ttf", family="Arial", root=root)
+#        _font_loaded_roots.add(root_id)
 
 class Foreground:
     def __init__(self, root):
         self.root = root
-        load_font(root)
+        #load_font(root)
         self.foreground = ctk.CTkFrame(
             master=root,
             border_width=10,
@@ -88,7 +88,7 @@ class TextBox:
             border_color=from_rgb((0,0,0)),
             placeholder_text=text,
             text_color=from_rgb((0,0,0)),
-            font=("Dongle", 64)
+            font=("Arial", 64)
         )
         self.sizex=sizex
         self.sizey=sizey
@@ -114,7 +114,7 @@ class BlueButton:
             fg_color=values["blue"],
             text=text,
             command=command,
-            font=("Dongle", 32)
+            font=("Arial", 32)
         )
         self.sizex = sizex
         self.sizey = sizey
@@ -137,7 +137,7 @@ class GreenButton:
             fg_color=values["green"],
             text=text,
             command=command,
-            font=("Dongle", 32)
+            font=("Arial", 32)
         )
         self.sizex = sizex
         self.sizey = sizey
@@ -189,7 +189,7 @@ class SumbitButton:
             text="Submit",
             fg_color=values["green"],
             command=command,
-            font=("Dongle", 32)
+            font=("Arial", 32)
         )
         self.sizex=sizex
         self.sizey=sizey
@@ -205,9 +205,27 @@ class OutputBox:
         self.text = ctk.CTkLabel(
             master=titleframe,
             text=text,
-            font=("Dongle", 100),
+            font=("Arial", 100),
             text_color="#212121"
         )
 
     def show(self):
         self.text.pack(pady=10)
+
+
+class OutputFrame:
+    def __init__(self, foreground, sizex, sizey):
+        self.frame = ctk.CTkFrame(
+            master=foreground,
+            border_width=5,
+            corner_radius=15,
+            border_color=from_rgb((200,255,200)),
+            fg_color=values["green"]
+        )
+        self.sizex=sizex
+        self.sizey=sizey
+
+    def show(self, x, y):
+        self.frame.place(x=int(x * scale_x), y=int(y * scale_y), anchor="center")  
+        self.frame.configure(width=int(self.sizex * scale_x), height=int(self.sizey * scale_y))
+        self.frame.propagate(False)

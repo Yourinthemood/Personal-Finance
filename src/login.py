@@ -4,6 +4,9 @@ import customtkinter as ctk
 
 #Login Function:
 def log_in(mode):
+    def send():
+      root.destroy()
+      main_menu.main_menu(mode)
   #loop until login complete:
     #Display a Log in screen that has two text box fields labeled Username and Password Respectively. After those have a Enter or submit buttont to send info here
     root = ctk.CTk()
@@ -33,13 +36,13 @@ def log_in(mode):
     password_box = styles.TextBox(foreground.foreground, "Password: ")
     password_box.show(800,800)
 
-    submit_button = styles.SumbitButton(foreground.foreground,lambda: main_menu.main_menu(mode))
+    submit_button = styles.SumbitButton(foreground.foreground,lambda: send())
     submit_button.show(x=1500, y=700)
 
     root.mainloop()
 
     #Search JSON for the User and their Info
-    user_info = JSON_management.JSON_reader()
+    #user_info = JSON_management.JSON_reader()
 
     #if the Username is not there:
       #Display User Does not Exist message and then restart loop
