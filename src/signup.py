@@ -14,6 +14,9 @@ def signup():
     titleframe = styles.TitleBoxText(foreground.foreground)#You need some tacos to feel better!!!
     titleframe.show()
 
+    title = styles.OutputBox(titleframe.title, "Sign Up")
+    title.show()
+
     x = styles.RedX(foreground.foreground, root)
     x.show()
 
@@ -23,7 +26,7 @@ def signup():
     password_box = styles.TextBox(foreground.foreground, "Password: ")
     password_box.show(800,800)
 
-    submit_button = styles.SumbitButton(foreground.foreground, lambda: main_menu.main_menu(), color=(200,200,255))
+    submit_button = styles.SumbitButton(foreground.foreground, lambda: main_menu.main_menu())
     submit_button.show(x=1500, y=700)
 
     root.mainloop()

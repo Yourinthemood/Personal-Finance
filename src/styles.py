@@ -1,11 +1,15 @@
 #Classes for creating default stuff Goes here
 
-#Imports
+# Imports
 import customtkinter as ctk
 from tkextrafont import Font
+
+# Load colors
 values = {"grey": "#35393C", "linen": "#F2E9DC", "strawberry": "#E34850", "blue": "#727FC8", "green": "#709775"}
 def from_rgb(rgb):
     return "#%02x%02x%02x" % rgb
+
+# Load fonts
 _font_loaded_roots = set()
 def load_font(root):
     root_id = id(root)
@@ -61,7 +65,7 @@ class TextBox:
             border_color=from_rgb((0,0,0)),
             placeholder_text=text,
             text_color=from_rgb((0,0,0)),
-            font=("Dongle", 32)
+            font=("Dongle", 64)
         )
         self.sizex=sizex
         self.sizey=sizey
@@ -153,14 +157,14 @@ class RedX:
 
 
 class SumbitButton:
-    def __init__(self, foreground, command, color, sizex=200, sizey=100):
+    def __init__(self, foreground, command, sizex=200, sizey=100):
         self.submit = ctk.CTkButton(
             master=foreground,
             border_width=5,
             corner_radius=15,
             border_color=from_rgb((0,0,0)),
             text="Submit",
-            fg_color=from_rgb(color),
+            fg_color=values["green"],
             command=command,
             font=("Dongle", 32)
         )
@@ -174,10 +178,10 @@ class SumbitButton:
 
 
 class OutputBox:
-    def __init__(self, titleframe):
+    def __init__(self, titleframe, text):
         self.text = ctk.CTkLabel(
             master=titleframe,
-            text="Personal Finance App",
+            text=text,
             font=("Dongle", 100),
             text_color="#212121"
         )

@@ -10,7 +10,7 @@ except:
   pygame.mixer.music.load("music.mp3")
 pygame.mixer.music.play(loops=-1)
 os.system("cls")
-print("THIS PROJECT IS BUILT FOR A MONITOR WITH 2560x1400px, OTHERWISE IT LOOKS WEIRD!")
+print("THIS PROJECT IS BUILT FOR A MONITOR WITH 2560x1440px, OTHERWISE IT LOOKS WEIRD!")
 
 #main function
 def main():
@@ -18,7 +18,7 @@ def main():
   #Log in screen will have an option to log in to an existing account or an option to create a new account
   
   root = ctk.CTk()
-  root.geometry("2560x1400+0+0")
+  root.geometry("2560x1440+0+0")
   ctk.set_appearance_mode("dark")
   
   foreground = styles.Foreground(root)
@@ -27,7 +27,7 @@ def main():
   titleframe = styles.TitleBoxText(foreground.foreground)
   titleframe.show()
 
-  title = styles.OutputBox(titleframe.title)
+  title = styles.OutputBox(titleframe.title, "Personal Finance App")
   title.show()
 
   x = styles.RedX(foreground.foreground, root)

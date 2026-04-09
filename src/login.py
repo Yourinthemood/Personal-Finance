@@ -19,6 +19,9 @@ def log_in():
     titleframe = styles.TitleBoxText(foreground.foreground)
     titleframe.show()
 
+    title = styles.OutputBox(titleframe.title, "Log In")
+    title.show()
+
     username_box = styles.TextBox(foreground.foreground,"Username: ")
     username_box.show(800,600)
 
