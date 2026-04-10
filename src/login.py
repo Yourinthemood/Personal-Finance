@@ -5,17 +5,17 @@ import customtkinter as ctk
 #Login Function:
 def log_in(mode):
     def send():
-      root.destroy()
-      main_menu.main_menu(mode)
+        root.destroy()
+        main_menu.main_menu(mode)
   #loop until login complete:
     #Display a Log in screen that has two text box fields labeled Username and Password Respectively. After those have a Enter or submit buttont to send info here
     root = ctk.CTk()
     if mode == "1440p":
-      root.geometry("2560x1440+0+0")
+        root.geometry("2560x1440+0+0")
     elif mode == "1080p":
-      root.geometry("1920x1080+0+0")
+        root.geometry("1920x1080+0+0")
     elif mode == "fullscreen":
-      root.attributes("-fullscreen", True)
+        root.attributes("-fullscreen", True)
     ctk.set_appearance_mode("dark")
 
     foreground = styles.Foreground(root)
@@ -31,13 +31,13 @@ def log_in(mode):
     title.show()
 
     username_box = styles.TextBox(foreground.foreground,"Username: ")
-    username_box.show(800,600)
+    username_box.show(700,600)
 
     password_box = styles.TextBox(foreground.foreground, "Password: ")
-    password_box.show(800,800)
+    password_box.show(700,800)
 
-    submit_button = styles.SumbitButton(foreground.foreground,lambda: send())
-    submit_button.show(x=1500, y=700)
+    submit_button = styles.SumbitButton(foreground.foreground,lambda: send(), sizex=500, sizey=300)
+    submit_button.show(1800, 700)
 
     root.mainloop()
 
