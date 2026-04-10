@@ -164,7 +164,7 @@ def interest_calc(mode):
             starting_num = float(starting_val)
             rate_num = float(rate_val)
             years_num = float(years_val)
-            result = f"${(years_num*rate_num*starting_num):.2f}"
+            result = f"${(years_num*(1+rate_num)*starting_num):.2f}"
             size = 150
         except (ValueError, ZeroDivisionError):
             result = "Waiting for input..."
@@ -189,7 +189,7 @@ def interest_calc(mode):
     starting = styles.TextBox(foreground.foreground, "Starting Amount: ")
     starting.show(700,400)
 
-    rate = styles.TextBox(foreground.foreground, "Interest Rate:")
+    rate = styles.TextBox(foreground.foreground, "Interest Rate: (ex. 4% = .04)")
     rate.show(700,700)
     
     years = styles.TextBox(foreground.foreground, "How Long in Years: ")
@@ -251,7 +251,7 @@ def compound_calc(mode):
     starting = styles.TextBox(foreground.foreground, "Starting Amount: ")
     starting.show(700,400)
 
-    rate = styles.TextBox(foreground.foreground, "Interest Rate: ")
+    rate = styles.TextBox(foreground.foreground, "Interest Rate: (ex. 4% = .04)")
     rate.show(700,600)
     
     years = styles.TextBox(foreground.foreground, "How Long in Years: ")

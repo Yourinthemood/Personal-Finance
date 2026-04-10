@@ -1,12 +1,28 @@
 #CP2 Project 3 Financial Calculations, Login Function
 import styles, JSON_management, main_menu
-import customtkinter as ctk
+import customtkinter as ctk, hashlib
 
 #Login Function:
 def log_in(mode):
-    def send():
+    def send(username,password):
+      valid = False
+      json_info = JSON_management.JSON_reader()
+      password = password.encode("utf-8")
+      if username in json_info:
+        if json_info[username]["Password"] == hashlib.blake2b(password).hexdigest():
+          valid = True
+        elif json_info[username]["Password"] != hashlib.blake2b(password).hexdigest():
+          print("No Password match")
+      else:
+         print("No Username Stored")
+
+      if not valid:
+        print("FIX YOUR INFORMATION NERD")
+      else:
         root.destroy()
-        main_menu.main_menu(mode)
+        main_menu.main_menu(mode, "login")
+
+
   #loop until login complete:
     #Display a Log in screen that has two text box fields labeled Username and Password Respectively. After those have a Enter or submit buttont to send info here
     root = ctk.CTk()
@@ -24,6 +40,7 @@ def log_in(mode):
     x = styles.RedX(foreground.foreground, root)
     x.show()
 
+
     titleframe = styles.TitleBoxText(foreground.foreground)
     titleframe.show()
 
@@ -36,7 +53,7 @@ def log_in(mode):
     password_box = styles.TextBox(foreground.foreground, "Password: ")
     password_box.show(700,800)
 
-    submit_button = styles.SumbitButton(foreground.foreground,lambda: send(), sizex=500, sizey=300)
+    submit_button = styles.SumbitButton(foreground.foreground,lambda: send(username_box.get_text(),password_box.get_text()), sizex=500, sizey=300)
     submit_button.show(1800, 700)
 
     root.mainloop()

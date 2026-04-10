@@ -1,12 +1,21 @@
 #CP2 Project 3
 import styles, JSON_management, main_menu
-import customtkinter as ctk
+import customtkinter as ctk, hashlib
 
 #Sign up function:
 def signup(mode):
-    def send():
+    def send(username,password):
+        pasw = password.encode("utf-8")
+        pasw = hashlib.blake2b(pasw).hexdigest()
+        data = {
+            "Username":username,
+            "Password":pasw
+        }
+        JSON_management.JSON_add(data)
         root.destroy()
-        main_menu.main_menu(mode)
+        main_menu.main_menu(mode, source="signup")
+
+        
     root = ctk.CTk()
     if mode == "1440p":
         root.geometry("2560x1440+0+0")
@@ -28,13 +37,14 @@ def signup(mode):
     x = styles.RedX(foreground.foreground, root)
     x.show()
 
+
     username_box = styles.TextBox(foreground.foreground,"Username: ")
     username_box.show(700,600)
 
     password_box = styles.TextBox(foreground.foreground, "Password: ")
     password_box.show(700,800)
 
-    submit_button = styles.SumbitButton(foreground.foreground,lambda: send(), sizex=500, sizey=300)
+    submit_button = styles.SumbitButton(foreground.foreground,lambda: send(username_box.get_text(),password_box.get_text()), sizex=500, sizey=300)
     submit_button.show(1800, 700)
 
     root.mainloop()

@@ -1,3 +1,12 @@
 {
-    
+    "TestUser": {
+        "Username": "TestUser",
+        "Password": "Password",
+        "Id": 0
+    },
+    "usernmae": {
+        "Username": "usernmae",
+        "Password": "4c1d3726140c05249e0879e5065401c207e5282891844e409d5642f700f2554646b0ed5f5b59285686bbec65d86f0926b4a6fdbf29ae3b948977e879da6166d2",
+        "Id": 2
+    }
 }

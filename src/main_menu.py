@@ -2,7 +2,7 @@
 import styles, income_expenses, budgeting_tools, currencies, graphs
 import customtkinter as ctk
 
-def main_menu(mode):
+def main_menu(mode, source):
     #Once the User has Logged in or Created a Account:
     #(While Logged in):
     root = ctk.CTk()
@@ -33,6 +33,17 @@ def main_menu(mode):
     title = styles.OutputBox(titleframe.title, "Personal Finance App")
     title.show()
 
+    if source == "login":
+        warning = styles.Warning(foreground.foreground)
+        warning_text = styles.OutputBox(warning.frame, "Succesfully logged in!", size=50)
+        warning.show()
+        warning_text.show()
+    else:
+        warning = styles.Warning(foreground.foreground)
+        warning_text = styles.OutputBox(warning.frame, "New Account Created!", size=50)
+        warning.show()
+        warning_text.show()
+
     #if clicked Display Pie Chart:
         #trigger Pie Chart Function
     pie_chart = styles.BlueButton(foreground.foreground,"Pie Chart",command=lambda: graphs.pie_chart(mode),sizex=650,sizey=250)
@@ -58,7 +69,7 @@ def main_menu(mode):
     income = styles.BlueButton(foreground.foreground,"New Income",command=lambda: income_expenses.income(mode),sizex=650,sizey=250)
     income.show(2000,600)
 
-    #if cicked New Expense:
+    #if clicked New Expense:
         #trigger New Expense Function
     expense = styles.BlueButton(foreground.foreground,"New Expense",command=lambda: income_expenses.expenses(mode),sizex=650,sizey=250)
     expense.show(2000,1000)

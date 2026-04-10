@@ -5,9 +5,9 @@ import customtkinter as ctk, pygame, os
 
 pygame.mixer.init()
 try:
-    pygame.mixer.music.load("Personal-Finance/music.mp3")
+    pygame.mixer.music.load("Personal-Finance/assets/Kass' Theme.mp3")
 except:
-    pygame.mixer.music.load("music.mp3")
+    pygame.mixer.music.load("assets/Kass' Theme.mp3")
 pygame.mixer.music.play(loops=-1)
 os.system("cls")
 

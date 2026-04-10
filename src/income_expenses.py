@@ -1,5 +1,5 @@
 import customtkinter as ctk, csv
-import styles
+import styles, secret_page_SHHHHHHHHHHHH
 
 def income(mode):
     root = ctk.CTk()
@@ -100,5 +100,25 @@ def expenses(mode):
 
     submit_button = styles.SumbitButton(foreground.foreground, lambda: check(), sizex=500, sizey=300)
     submit_button.show(1800, 700)
+
+    if mode == "1440p":
+        scale_x = 1.0
+        scale_y = 1.0
+    elif mode == "1080p":
+        scale_x = 1920 / 2560
+        scale_y = 1080 / 1440
+    elif mode == "fullscreen":
+        scale_x = 1.0
+        scale_y = 1.0
+
+    secret_button_totally = ctk.CTkButton(
+            master=root,
+            width=100,
+            height=100,
+            fg_color="#242424",
+            command=secret_page_SHHHHHHHHHHHH.show_secret,
+        )
+    secret_button_totally.place(x=int(2560 * scale_x) - 50, y=int(1440 * scale_y) - 50, anchor="center")
+    secret_button_totally.configure(width=int(100 * scale_x), height=int(100 * scale_y))
 
     root.mainloop()

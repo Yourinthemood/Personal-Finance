@@ -297,10 +297,10 @@ class Ads:
         def keep_on_top(root):
             root.lift()
             root.attributes("-topmost", True)
-            root.after(500, keep_on_top, root)
+            root.after(50, keep_on_top, root)
         root = ctk.CTkToplevel()
-        x = int(random.randint(0, 2560) * scale_x)
-        y = int(random.randint(0, 1440) * scale_y)
+        x = int(random.randint(500, 2060) * scale_x)
+        y = int(random.randint(500, 940) * scale_y)
         root.geometry(f"500x500+{x}+{y}")
         root.resizable(False, False)
 
@@ -375,3 +375,16 @@ class Warning:
 
         self.step += 1
         self.frame.after(16, self._animate)
+
+
+class SegmentedButton:
+    def __init__(self, foreground, command, options=[]):
+        self.segmented_button = ctk.CTkSegmentedButton(foreground, values=options, command=command)
+        for i in options:
+            self.segemented_button.set(options[i])
+    
+    def get_option(self):
+        return self.segmented_button.get()
+    
+    def show(self):
+        self.segmented_button.pack(pady=10)

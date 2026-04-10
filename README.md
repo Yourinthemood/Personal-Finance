@@ -11,7 +11,12 @@ Paragraph discription of your project
 3. Install pygame
 4. Install pygame-ce
 5. Install pillow
-
+6. Run
+***
+## How to intall libraries
+1. Open New Terminal
+2. type the command: pip install libraryname
+3. press the enter button
 ## Details on Project features
 ***
 - ALL key features in your repository with a detailed discription
