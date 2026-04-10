@@ -35,33 +35,33 @@ def main_menu(mode):
 
     #if clicked Display Pie Chart:
         #trigger Pie Chart Function
-    pie_chart = styles.BlueButton(foreground.foreground,"Pie Chart",command=lambda: print("Pie Chart Clicked"),sizex=300,sizey=100)
-    pie_chart.show(400,400)
+    pie_chart = styles.BlueButton(foreground.foreground,"Pie Chart",command=lambda: print("Pie Chart Clicked"),sizex=650,sizey=250)
+    pie_chart.show(400,600)
 
     #if clicked Display Line Graph
         #trigger Line Graph Function
-    line_graph = styles.BlueButton(foreground.foreground,"Line Graph",command=lambda: print("Line Graph Clicked"),sizex=300,sizey=100)
-    line_graph.show(400,600)
+    line_graph = styles.BlueButton(foreground.foreground,"Line Graph",command=lambda: print("Line Graph Clicked"),sizex=650,sizey=250)
+    line_graph.show(400,1000)
 
     #if clicked Budgeting Tools:
         #trigger Budgeting Tools Menu Function
-    budget = styles.BlueButton(foreground.foreground,"Budgeting tools",command=lambda: budgeting_tools.budgeting_tools(mode),sizex=350,sizey=100)
-    budget.show(800,400)
+    budget = styles.BlueButton(foreground.foreground,"Budgeting tools",command=lambda: budgeting_tools.budgeting_tools(mode),sizex=650,sizey=250)
+    budget.show(1200,600)
 
     #if clicked Convert to Different Currency:
         #trigger Convert to Dif. Currency Function
-    currency_conv = styles.BlueButton(foreground.foreground,"Currency Conversion",command=lambda: print("Currency Conversion Clicked"),sizex=300,sizey=100)
-    currency_conv.show(800,600)
+    currency_conv = styles.BlueButton(foreground.foreground,"Currency Conversion",command=lambda: print("Currency Conversion Clicked"),sizex=650,sizey=250)
+    currency_conv.show(1200,1000)
 
     #if clicked New Income:
         #trigger New Income Function
-    income = styles.BlueButton(foreground.foreground,"New Income",command=lambda: income_expenses.income(mode),sizex=300,sizey=100)
-    income.show(1200,400)
+    income = styles.BlueButton(foreground.foreground,"New Income",command=lambda: income_expenses.income(mode),sizex=650,sizey=250)
+    income.show(2000,600)
 
     #if cicked New Expense:
         #trigger New Expense Function
-    expense = styles.BlueButton(foreground.foreground,"New Expense",command=lambda: income_expenses.expenses(mode),sizex=300,sizey=100)
-    expense.show(1200,600)
+    expense = styles.BlueButton(foreground.foreground,"New Expense",command=lambda: income_expenses.expenses(mode),sizex=650,sizey=250)
+    expense.show(2000,1000)
 
 
     #if clicked Quit Program 

@@ -12,6 +12,22 @@ def savings_calc(mode):
   elif mode == "fullscreen":
     root.attributes("-fullscreen", True)
   ctk.set_appearance_mode("dark")
+
+  def update():
+    goal_name = name.get_text()
+    end_val = end.get_text()
+    months_val = months.get_text()
+
+    try:
+        end_num = float(end_val)
+        months_num = float(months_val)
+        monthly = end_num / months_num
+        result = f"{goal_name}\n${monthly:.2f}/month\nfor {months_num:.1f} months\nto reach ${end_num:.2f}"
+    except (ValueError, ZeroDivisionError):
+        result = "Waiting for input..."
+
+    text.text.configure(text=result)
+    root.after(10, update)
   
   foreground = styles.Foreground(root)
   foreground.show()
@@ -26,36 +42,44 @@ def savings_calc(mode):
   x.show()
 
 
-  name = styles.TextBox(foreground.foreground, "Name of Goal: ", sizex=1500)
-  name.show(900,400)
+  name = styles.TextBox(foreground.foreground, "Name of Goal: ", sizex=1000)
+  name.show(700, 400)
 
-  end = styles.TextBox(foreground.foreground, "End Goal: ", sizex=1500)
-  end.show(900,700)
-  
-  months = styles.TextBox(foreground.foreground, "How many months: ", sizex=1500)
-  months.show(900,1000)
+  end = styles.TextBox(foreground.foreground, "End Goal: ", sizex=1000)
+  end.show(700, 700)
 
+  months = styles.TextBox(foreground.foreground, "How many months: ", sizex=1000)
+  months.show(700, 1000)
 
-  output = styles.OutputFrame(foreground.foreground, sizex=500, sizey=500)
-  output.show(2100, 700)
+  output = styles.OutputFrame(foreground.foreground, sizex=1000, sizey=600)
+  output.show(1800, 700)
 
-  #text = styles.OutputBox()
+  text = styles.OutputBox(output.frame, "", size=75)
+  text.show()
 
+  update()
   root.mainloop()
 
 def budget_calc(mode):
-  def each(num, mode):
-    for i in enumerate(num):
-      root = ctk.CTk()
-      if mode == "1440p":
-        root.geometry("2560x1440+0+0")
-      elif mode == "1080p":
-        root.geometry("1920x1080+0+0")
-      elif mode == "fullscreen":
-        root.attributes("-fullscreen", True)
-      ctk.set_appearance_mode("dark")
+  results = []
+  num_categories = [0]
 
-      foreground = styles.Foreground(root)
+  def make_root():
+    r = ctk.CTk()
+    if mode == "1440p":
+      r.geometry("2560x1440+0+0")
+    elif mode == "1080p":
+      r.geometry("1920x1080+0+0")
+    elif mode == "fullscreen":
+      r.attributes("-fullscreen", True)
+    ctk.set_appearance_mode("dark")
+    return r
+
+  def each(num):
+    for i in range(num):
+      cat_root = make_root()
+
+      foreground = styles.Foreground(cat_root)
       foreground.show()
 
       titleframe = styles.TitleBoxText(foreground.foreground)
@@ -64,35 +88,38 @@ def budget_calc(mode):
       title = styles.OutputBox(titleframe.title, "Budget Allocator")
       title.show()
 
-      x = styles.RedX(foreground.foreground, root)
+      x = styles.RedX(foreground.foreground, cat_root)
       x.show()
 
+      number = styles.TextBox(foreground.foreground, f"Enter Name of Category #{i + 1}: ")
+      number.show(800, 600)
 
-      number = styles.TextBox(foreground.foreground, f"Enter Name of Category #{i}: ")
-      number.show(800,600)
+      amount = styles.TextBox(foreground.foreground, f"Enter Amount for Category #{i + 1}: ")
+      amount.show(800, 800)
 
-      amount = styles.TextBox(foreground.foreground, f"Enter Amount for Category #{i}: ")
-      amount.show(800,800)
+      def submit(n=number, a=amount, r=cat_root):
+        results.append({"name": n.get_text(), "amount": a.get_text()})
+        r.quit()  # exits mainloop without destroying
+        r.destroy()
 
-      submit_button = styles.SumbitButton(foreground.foreground, lambda: root.destroy())
+      submit_button = styles.SumbitButton(foreground.foreground, submit)
       submit_button.show(x=1500, y=700)
 
-  def check(num, mode):
+      cat_root.mainloop()  # blocks here until submit or X is clicked
+
+    print(results)
+
+  def check():
     try:
-      num = int(num)
-      each(num, mode)
-    except:
+      num_categories[0] = int(categories.get_text())
+      root.quit()
+      root.destroy()
+      each(num_categories[0])
+    except ValueError:
       pass
 
-  root = ctk.CTk()
-  if mode == "1440p":
-    root.geometry("2560x1440+0+0")
-  elif mode == "1080p":
-    root.geometry("1920x1080+0+0")
-  elif mode == "fullscreen":
-    root.attributes("-fullscreen", True)
-  ctk.set_appearance_mode("dark")
-  
+  root = make_root()
+
   foreground = styles.Foreground(root)
   foreground.show()
 
@@ -105,15 +132,14 @@ def budget_calc(mode):
   x = styles.RedX(foreground.foreground, root)
   x.show()
 
-
   categories = styles.TextBox(foreground.foreground, "Number of Categories: ")
-  categories.show(800,600)
+  categories.show(800, 600)
 
-  submit_button = styles.SumbitButton(foreground.foreground, lambda: check(categories.get_text(), mode))
+  submit_button = styles.SumbitButton(foreground.foreground, check)
   submit_button.show(x=1500, y=700)
 
   root.mainloop()
-
+  
 def interest_calc(mode):
   root = ctk.CTk()
   if mode == "1440p":
@@ -123,6 +149,25 @@ def interest_calc(mode):
   elif mode == "fullscreen":
     root.attributes("-fullscreen", True)
   ctk.set_appearance_mode("dark")
+
+  def update():
+    starting_val = starting.get_text()
+    rate_val = rate.get_text()
+    years_val = years.get_text()
+    size = 75
+
+    try:
+        starting_num = float(starting_val)
+        rate_num = float(rate_val)
+        years_num = float(years_val)
+        result = f"${(years_num*rate_num*starting_num):.2f}"
+        size = 150
+    except (ValueError, ZeroDivisionError):
+        result = "Waiting for input..."
+        size = 75
+
+    text.text.configure(text=result, font=("Dongle", size))
+    root.after(10, update)
   
   foreground = styles.Foreground(root)
   foreground.show()
@@ -136,15 +181,23 @@ def interest_calc(mode):
   x = styles.RedX(foreground.foreground, root)
   x.show()
 
+
   starting = styles.TextBox(foreground.foreground, "Starting Amount: ")
-  starting.show(800,600)
+  starting.show(700,400)
 
-  rate = styles.TextBox(foreground.foreground, "Interest Rate: ")
-  rate.show(800,800)
+  rate = styles.TextBox(foreground.foreground, "Interest Rate:")
+  rate.show(700,700)
   
-  months = styles.TextBox(foreground.foreground, "How Long in Months: ")
-  months.show(800,1000)
+  years = styles.TextBox(foreground.foreground, "How Long in Years: ")
+  years.show(700,1000)
 
+  output = styles.OutputFrame(foreground.foreground, sizex=1000, sizey=600)
+  output.show(1800, 700)
+
+  text = styles.OutputBox(output.frame, "", size=150)
+  text.show()
+
+  update()
   root.mainloop()
 
 def compound_calc(mode):
@@ -156,6 +209,27 @@ def compound_calc(mode):
   elif mode == "fullscreen":
     root.attributes("-fullscreen", True)
   ctk.set_appearance_mode("dark")
+
+  def update():
+    starting_val = starting.get_text()
+    rate_val = rate.get_text()
+    years_val = years.get_text()
+    per_val = per.get_text()
+    size = 75
+
+    try:
+        starting_num = float(starting_val)
+        rate_num = float(rate_val)
+        years_num = float(years_val)
+        per_num = float(per_val)
+        result = f"${(starting_num*((1+(rate_num/per_num))**(per_num*years_num))):.2f}"
+        size = 100
+    except (ValueError, ZeroDivisionError):
+        result = "Waiting for input..."
+        size = 75
+
+    text.text.configure(text=result, font=("Dongle", size))
+    root.after(10, update)
   
   foreground = styles.Foreground(root)
   foreground.show()
@@ -170,18 +244,25 @@ def compound_calc(mode):
   x.show()
 
 
-  starting = styles.TextBox(foreground.foreground, "Starting Amount: ", sizex=1500)
-  starting.show(1000,400)
+  starting = styles.TextBox(foreground.foreground, "Starting Amount: ")
+  starting.show(700,400)
 
-  rate = styles.TextBox(foreground.foreground, "Interest Rate: ", sizex=1500)
-  rate.show(1000,600)
+  rate = styles.TextBox(foreground.foreground, "Interest Rate: ")
+  rate.show(700,600)
   
-  months = styles.TextBox(foreground.foreground, "How Long in Months: ", sizex=1500)
-  months.show(1000,800)
+  years = styles.TextBox(foreground.foreground, "How Long in Years: ")
+  years.show(700,800)
 
-  per = styles.TextBox(foreground.foreground, "Amount Added Per Month: ", sizex=1500)
-  per.show(1000,1000)
+  per = styles.TextBox(foreground.foreground, "Times Compounded Each Year: ")
+  per.show(700,1000)
 
+  output = styles.OutputFrame(foreground.foreground, sizex=1000, sizey=600)
+  output.show(1800, 700)
+
+  text = styles.OutputBox(output.frame, "", size=150)
+  text.show()
+
+  update()
   root.mainloop()
 
 #Budgeting Tools UI Function:
@@ -209,17 +290,17 @@ def budgeting_tools(mode):
   x.show()
 
 
-  savings_goal = styles.BlueButton(foreground.foreground,"Savings Goal Calculator",command=lambda: savings_calc(mode),sizex=600,sizey=100)
-  savings_goal.show(400,400)
+  savings_goal = styles.BlueButton(foreground.foreground,"Savings Goal Calculator",command=lambda: savings_calc(mode),sizex=1000,sizey=250)
+  savings_goal.show(600,600)
 
-  budget_allocator = styles.BlueButton(foreground.foreground,"Budget Allocator",command=lambda: budget_calc(mode),sizex=600,sizey=100)
-  budget_allocator.show(400,600)
+  budget_allocator = styles.BlueButton(foreground.foreground,"Budget Allocator",command=lambda: budget_calc(mode),sizex=1000,sizey=250)
+  budget_allocator.show(600,1000)
 
-  interest = styles.BlueButton(foreground.foreground,"Interest Calculator",command=lambda: interest_calc(mode),sizex=600,sizey=100)
-  interest.show(1200,400)
+  interest = styles.BlueButton(foreground.foreground,"Interest Calculator",command=lambda: interest_calc(mode),sizex=1000,sizey=250)
+  interest.show(1800,600)
 
-  compound = styles.BlueButton(foreground.foreground,"Compound Interest Calculator",command=lambda: compound_calc(mode),sizex=600,sizey=100)
-  compound.show(1200,600)
+  compound = styles.BlueButton(foreground.foreground,"Compound Interest Calculator",command=lambda: compound_calc(mode),sizex=1000,sizey=250)
+  compound.show(1800,1000)
 
   root.mainloop()
   #if the user clicks a button, load that function. Functions:

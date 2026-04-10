@@ -3,6 +3,7 @@
 # Imports
 import customtkinter as ctk
 from tkextrafont import Font
+import os
 
 # Load colors
 values = {"grey": "#35393C", "linen": "#F2E9DC", "strawberry": "#E34850", "blue": "#727FC8", "green": "#709775"}
@@ -33,17 +34,17 @@ def from_rgb(rgb):
     return "#%02x%02x%02x" % rgb
 
 # Load fonts
-#_font_loaded_roots = set()
-#def load_font(root):
-#    root_id = id(root)
-#    if root_id not in _font_loaded_roots:
-#        Font(file="docs/images/Dongle-Bold.ttf", family="Arial", root=root)
-#        _font_loaded_roots.add(root_id)
+_font_loaded_roots = set()
+def load_font(root):
+    root_id = id(root)
+    if root_id not in _font_loaded_roots:
+        Font(file="docs/images/Dongle-Bold.ttf", family="Dongle", root=root)
+        _font_loaded_roots.add(root_id)
 
 class Foreground:
     def __init__(self, root):
         self.root = root
-        #load_font(root)
+        load_font(root)
         self.foreground = ctk.CTkFrame(
             master=root,
             border_width=10,
@@ -57,7 +58,7 @@ class Foreground:
 
 
 class TitleBoxText:
-    def __init__(self, foreground, sizex=2100, sizey=125):
+    def __init__(self, foreground, sizex=2000, sizey=150):
         self.title = ctk.CTkFrame(
             master=foreground,
             width=sizex,
@@ -65,12 +66,12 @@ class TitleBoxText:
             border_width=8,
             corner_radius=25,
             fg_color=values["strawberry"],
-            border_color=from_rgb((255, 200, 200))
+            border_color=from_rgb((255,200,200)),
         )
         self.sizex = sizex
         self.sizey = sizey
         
-    def show(self, x=1150, y=100):
+    def show(self, x=1100, y=150):
         self.title.place(x=int(x * scale_x), y=int(y * scale_y), anchor="center")
         self.title.configure(width=int(self.sizex * scale_x), height=int(self.sizey * scale_y))
         self.title.propagate(False)
@@ -88,7 +89,7 @@ class TextBox:
             border_color=from_rgb((0,0,0)),
             placeholder_text=text,
             text_color=from_rgb((0,0,0)),
-            font=("Arial", 64)
+            font=("Dongle", 64)
         )
         self.sizex=sizex
         self.sizey=sizey
@@ -114,7 +115,7 @@ class BlueButton:
             fg_color=values["blue"],
             text=text,
             command=command,
-            font=("Arial", 32)
+            font=("Dongle", 32)
         )
         self.sizex = sizex
         self.sizey = sizey
@@ -137,7 +138,7 @@ class GreenButton:
             fg_color=values["green"],
             text=text,
             command=command,
-            font=("Arial", 32)
+            font=("Dongle", 32)
         )
         self.sizex = sizex
         self.sizey = sizey
@@ -153,11 +154,12 @@ class RedX:
         self.foreground = foreground
         self.root = root
     
-    def show(self, x=2300, y=150):
+    def show(self, x=2250, y=150):
         canvas = ctk.CTkCanvas(self.foreground, width=int(150 * scale_x), height=int(150 * scale_y), bg=values["linen"], highlightthickness=0)
         
         def on_click(event):
             self.root.destroy()
+            os.system("cls")
 
         canvas.place(x=int(x * scale_x), y=int(y * scale_y), anchor="center")
 
@@ -189,7 +191,7 @@ class SumbitButton:
             text="Submit",
             fg_color=values["green"],
             command=command,
-            font=("Arial", 32)
+            font=("Dongle", 32)
         )
         self.sizex=sizex
         self.sizey=sizey
@@ -201,12 +203,12 @@ class SumbitButton:
 
 
 class OutputBox:
-    def __init__(self, titleframe, text):
+    def __init__(self, titleframe, text, size=100):
         self.text = ctk.CTkLabel(
             master=titleframe,
             text=text,
-            font=("Arial", 100),
-            text_color="#212121"
+            font=("Dongle", size),
+            text_color=values["linen"]
         )
 
     def show(self):
