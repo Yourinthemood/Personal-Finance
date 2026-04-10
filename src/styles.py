@@ -3,7 +3,8 @@
 # Imports
 import customtkinter as ctk
 from tkextrafont import Font
-import os
+from PIL import Image
+import os, random
 
 # Load colors
 values = {"grey": "#35393C", "linen": "#F2E9DC", "strawberry": "#E34850", "blue": "#727FC8", "green": "#709775"}
@@ -231,3 +232,146 @@ class OutputFrame:
         self.frame.place(x=int(x * scale_x), y=int(y * scale_y), anchor="center")  
         self.frame.configure(width=int(self.sizex * scale_x), height=int(self.sizey * scale_y))
         self.frame.propagate(False)
+
+
+class Popup:
+    def __init__(self, foreground, width=800, height=75):
+        self.frame = ctk.CTkFrame(
+            master=foreground,
+            border_width=5,
+            corner_radius=15,
+            width=10,
+            height=height,
+            border_color=from_rgb((255,200,200)),
+            fg_color=values["strawberry"]
+        )
+        self.sizex = width
+        self.sizey = height
+
+    def show(self):
+        self.start_y = 1500
+        self.end_y = 1200
+        self.step = 0
+        self._animate()
+
+    def _animate(self):
+        if self.step < 30:
+            t = self.step / 30
+            eased = 1 - (1 - t) ** 3
+            current_y = self.start_y + (self.end_y - self.start_y) * eased
+            self.frame.place(x=int(1280 * scale_x), y=int(current_y * scale_y), anchor="center")
+            self.frame.configure(width=int(10 * scale_x), height=int(self.sizey * scale_y))
+            self.frame.propagate(False)
+
+        elif self.step < 60:
+            t = (self.step - 30) / 30
+            eased = 1 - (1 - t) ** 3
+            current_width = self.sizex * eased
+            self.frame.configure(width=int(current_width * scale_x))
+
+        elif self.step < 160:
+            pass
+
+        elif self.step < 190:
+            t = (self.step - 160) / 30
+            eased = 1 - (1 - t) ** 3
+            current_width = self.sizex * (1 - eased)
+            self.frame.configure(width=int(max(current_width, 10) * scale_x))
+
+        elif self.step < 220:
+            t = (self.step - 190) / 30
+            eased = 1 - (1 - t) ** 3
+            current_y = self.end_y + (self.start_y - self.end_y) * eased
+            self.frame.place(x=int(1280 * scale_x), y=int(current_y * scale_y), anchor="center")
+
+        else:
+            self.frame.place_forget()
+            return
+
+        self.step += 1
+        self.frame.after(16, self._animate)
+
+
+class Ads:
+    def __init__(self):
+        def keep_on_top(root):
+            root.lift()
+            root.attributes("-topmost", True)
+            root.after(500, keep_on_top, root)
+        root = ctk.CTkToplevel()
+        x = int(random.randint(0, 2560) * scale_x)
+        y = int(random.randint(0, 1440) * scale_y)
+        root.geometry(f"500x500+{x}+{y}")
+        root.resizable(False, False)
+
+        root.attributes("-topmost", True)
+        root.lift()
+        root.focus_force()
+        root.overrideredirect(True)
+
+        pil_image = Image.open("assets/1.png")
+        ctk_image = ctk.CTkImage(light_image=pil_image, dark_image=pil_image, size=(500, 500))
+
+        image_label = ctk.CTkLabel(root, image=ctk_image, text="")
+        image_label.pack(expand=True, fill="both")
+        image_label.bind("<Button-1>", lambda e: root.destroy())
+
+        keep_on_top(root)
+
+
+class Warning:
+    def __init__(self, foreground, width=800, height=75):
+        self.frame = ctk.CTkFrame(
+            master=foreground,
+            border_width=5,
+            corner_radius=15,
+            width=10,
+            height=height,
+            border_color=from_rgb((200,200,255)),
+            fg_color=values["blue"]
+        )
+        self.sizex = width
+        self.sizey = height
+
+    def show(self):
+        self.start_y = 1500
+        self.end_y = 1200
+        self.step = 0
+        self._animate()
+
+    def _animate(self):
+        if self.step < 30:
+            t = self.step / 30
+            eased = 1 - (1 - t) ** 3
+            current_y = self.start_y + (self.end_y - self.start_y) * eased
+            self.frame.place(x=int(1280 * scale_x), y=int(current_y * scale_y), anchor="center")
+            self.frame.configure(width=int(10 * scale_x), height=int(self.sizey * scale_y))
+            self.frame.propagate(False)
+
+        elif self.step < 60:
+            t = (self.step - 30) / 30
+            eased = 1 - (1 - t) ** 3
+            current_width = self.sizex * eased
+            self.frame.configure(width=int(current_width * scale_x))
+
+        elif self.step < 160:
+            pass
+
+        elif self.step < 190:
+            t = (self.step - 160) / 30
+            eased = 1 - (1 - t) ** 3
+            current_width = self.sizex * (1 - eased)
+            self.frame.configure(width=int(max(current_width, 10) * scale_x))
+
+        elif self.step < 220:
+            t = (self.step - 190) / 30
+            eased = 1 - (1 - t) ** 3
+            current_y = self.end_y + (self.start_y - self.end_y) * eased
+            self.frame.place(x=int(1280 * scale_x), y=int(current_y * scale_y), anchor="center")
+
+        else:
+            self.frame.place_forget()
+            return
+
+        self.step += 1
+        self.frame.after(16, self._animate)

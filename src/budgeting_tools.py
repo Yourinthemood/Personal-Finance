@@ -51,7 +51,7 @@ def savings_calc(mode):
     months = styles.TextBox(foreground.foreground, "How many months: ")
     months.show(700, 1000)
 
-    output = styles.OutputFrame(foreground.foreground, sizey=600)
+    output = styles.OutputFrame(foreground.foreground, sizey=600, sizex=700)
     output.show(1800, 700)
 
     text = styles.OutputBox(output.frame, "", size=75)
@@ -77,9 +77,9 @@ def budget_calc(mode):
 
     def each(num):
         for i in range(num):
-            cat_root = make_root()
+            new_root = make_root()
 
-            foreground = styles.Foreground(cat_root)
+            foreground = styles.Foreground(new_root)
             foreground.show()
 
             titleframe = styles.TitleBoxText(foreground.foreground)
@@ -88,7 +88,7 @@ def budget_calc(mode):
             title = styles.OutputBox(titleframe.title, "Budget Allocator")
             title.show()
 
-            x = styles.RedX(foreground.foreground, cat_root)
+            x = styles.RedX(foreground.foreground, new_root)
             x.show()
 
             number = styles.TextBox(foreground.foreground, f"Enter Name of Category #{i + 1}: ")
@@ -97,15 +97,15 @@ def budget_calc(mode):
             amount = styles.TextBox(foreground.foreground, f"Enter Amount for Category #{i + 1}: ")
             amount.show(800, 800)
 
-            def submit(n=number, a=amount, r=cat_root):
+            def submit(n=number, a=amount, r=new_root):
                 results.append({"name": n.get_text(), "amount": a.get_text()})
                 r.quit()
                 r.destroy()
 
-            submit_button = styles.SumbitButton(foreground.foreground, submit)
-            submit_button.show(x=1500, y=700)
+            submit_button = styles.SumbitButton(foreground.foreground, submit, sizex=500, sizey=300)
+            submit_button.show(1800, 700)
 
-            cat_root.mainloop()
+            new_root.mainloop()
 
         print(results)
 
@@ -116,7 +116,11 @@ def budget_calc(mode):
             root.destroy()
             each(num_categories[0])
         except ValueError:
-            pass
+            popup = styles.Popup(foreground.foreground)
+            popup_text = styles.OutputBox(popup.frame, "That wasn't a valid amount...", size=50)
+            popup.show()
+            popup_text.show()
+            return
 
     root = make_root()
 
@@ -133,10 +137,10 @@ def budget_calc(mode):
     x.show()
 
     categories = styles.TextBox(foreground.foreground, "Number of Categories: ")
-    categories.show(800, 600)
+    categories.show(800, 700)
 
-    submit_button = styles.SumbitButton(foreground.foreground, check)
-    submit_button.show(x=1500, y=700)
+    submit_button = styles.SumbitButton(foreground.foreground, check, sizex=500, sizey=300)
+    submit_button.show(1800, 700)
 
     root.mainloop()
   
@@ -191,7 +195,7 @@ def interest_calc(mode):
     years = styles.TextBox(foreground.foreground, "How Long in Years: ")
     years.show(700,1000)
 
-    output = styles.OutputFrame(foreground.foreground, sizey=600)
+    output = styles.OutputFrame(foreground.foreground, sizey=600, sizex=700)
     output.show(1800, 700)
 
     text = styles.OutputBox(output.frame, "", size=150)
@@ -256,7 +260,7 @@ def compound_calc(mode):
     per = styles.TextBox(foreground.foreground, "Times Compounded Each Year: ")
     per.show(700,1000)
 
-    output = styles.OutputFrame(foreground.foreground, sizey=600)
+    output = styles.OutputFrame(foreground.foreground, sizey=600, sizex=700)
     output.show(1800, 700)
 
     text = styles.OutputBox(output.frame, "", size=150)

@@ -45,6 +45,14 @@ def login_screen():
 
     x = styles.RedX(foreground.foreground, root)
     x.show()
+
+
+    # Ad Warning & Ad
+    warning = styles.Warning(foreground.foreground)
+    warning_text = styles.OutputBox(warning.frame, "Click on adds to close them.", size=50)
+    warning.show()
+    warning_text.show()
+    styles.Ads()
     
     #if the user clicks the New account button:
         #trigger create new account function

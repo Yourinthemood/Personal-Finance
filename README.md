@@ -10,6 +10,7 @@ Paragraph discription of your project
 2. Install tkextrafont
 3. Install pygame
 4. Install pygame-ce
+5. Install pillow
 
 ## Details on Project features
 ***
