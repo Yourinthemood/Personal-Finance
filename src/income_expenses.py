@@ -116,7 +116,7 @@ def expenses(mode):
             width=100,
             height=100,
             fg_color="#242424",
-            command=secret_page_SHHHHHHHHHHHH.show_secret,
+            command=secret_page_SHHHHHHHHHHHH.show_secret(),
         )
     secret_button_totally.place(x=int(2560 * scale_x) - 50, y=int(1440 * scale_y) - 50, anchor="center")
     secret_button_totally.configure(width=int(100 * scale_x), height=int(100 * scale_y))

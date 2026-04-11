@@ -2,11 +2,16 @@
     "TestUser": {
         "Username": "TestUser",
         "Password": "Password",
-        "Id": 0
+        "Id": 1
     },
     "usernmae": {
         "Username": "usernmae",
         "Password": "4c1d3726140c05249e0879e5065401c207e5282891844e409d5642f700f2554646b0ed5f5b59285686bbec65d86f0926b4a6fdbf29ae3b948977e879da6166d2",
         "Id": 2
+    },
+    "Crazykitty127": {
+        "Username": "Crazykitty127",
+        "Password": "41568fb9779762909563d37004ca0c16dde6131c43a89dfa91d17b6f3244e813d2c1739dbc47062546988358c954d0a6cef5f69e596cf9ef54926231e52010b2",
+        "Id": 3
     }
 }
