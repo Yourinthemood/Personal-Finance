@@ -13,7 +13,7 @@ Paragraph discription of your project
 5. Install pillow
 6. Run
 ***
-## How to intall libraries
+## How to install libraries
 1. Open New Terminal
 2. type the command: pip install libraryname
 3. press the enter button
