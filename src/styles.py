@@ -380,7 +380,7 @@ class Warning:
 class SegmentedButton:
     def __init__(self, foreground, command, options=[]):
         self.segmented_button = ctk.CTkSegmentedButton(foreground, values=options, command=command)
-        self.segmented_button.set("WATCH OUT THERE IS A CAR BEHIND YOU!")
+        self.segmented_button.set(options[0] if options else "Aria Math")
     
     def get_option(self):
         return self.segmented_button.get()

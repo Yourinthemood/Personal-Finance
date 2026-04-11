@@ -3,42 +3,66 @@ import styles
 import customtkinter as ctk, pygame
 
 def show_secret():
-    def change_music():
+    def change_music(selected):
         #Play matching song
         pygame.mixer.pause()
         match selected:
             case "Aria Math":
-                print("AREA MATH")
+                try:
+                    pygame.mixer.music.load("Personal-Finance/assets/Aria Math.mp3")
+                except:
+                    pygame.mixer.music.load("assets/Aria Math.mp3")
             case "Buying Tacos":
-                print("I CAN BUY MYSELF TACOS")
+                try:
+                    pygame.mixer.music.load("Personal-Finance/assets/Flowers Parody.mp3")
+                except:
+                    pygame.mixer.music.load("assets/Flowers Parody.mp3")
             case "Graze the roof":
-                print("MARK ROBERING INTESIFIES")
+                try:
+                    pygame.mixer.music.load("Personal-Finance/assets/Graze the Roof.mp3")
+                except:
+                    pygame.mixer.music.load("assets/Graze the Roof.mp3")
             case "Gusty Garden Galaxy theme":
                 try:
                     pygame.mixer.music.load("Personal-Finance/assets/Gusty Garden Galaxy.mp3")
                 except:
                     pygame.mixer.music.load("assets/Gusty Garden Galaxy.mp3")
-                pygame.mixer.music.play(loops=-1)
             case "Kass's theme (default)":
                 try:
                     pygame.mixer.music.load("Personal-Finance/assets/Kass' Theme.mp3")
                 except:
                     pygame.mixer.music.load("assets/Kass' Theme.mp3")
-                pygame.mixer.music.play(loops=-1)
             case "Loonboon":
-                print("DESTROY ZOMBIES")
+                try:
+                    pygame.mixer.music.load("Personal-Finance/assets/Loonboon.mp3")
+                except:
+                    pygame.mixer.music.load("assets/Loonboon.mp3")
             case "Mii Channel (plaza)":
-                print("THAT'S NOT ME")
+                try:
+                    pygame.mixer.music.load("Personal-Finance/assets/Mii Channel (Plaza).mp3")
+                except:
+                    pygame.mixer.music.load("assets/Mii Channel (Plaza).mp3")
             case "Moog city 2":
-                print("RELAX.YES")
-            case "music":
-                print("UHH IDK WHAT THIS DOES")
+                try:
+                    pygame.mixer.music.load("Personal-Finance/assets/Moog City 2.mp3")
+                except:
+                    pygame.mixer.music.load("assets/Moog City 2.mp3")
             case "Ultimate battle":
-                print("NOT SO ULTIMATE NOW")
+                try:
+                    pygame.mixer.music.load("Personal-Finance/assets/Ultimate Battle.mp3")
+                except:
+                    pygame.mixer.music.load("assets/Ultimate Battle.mp3")
             case "Wii Shop Channel":
-                print("GO SHOPING")
+                try:
+                    pygame.mixer.music.load("Personal-Finance/assets/Wii Shop Channel.mp3")
+                except:
+                    pygame.mixer.music.load("assets/Wii Shop Channel.mp3")
             case "Wii Sports Title Screen":
-                print("DO DO DO DO DO DO DOOOOOOOOOOOOOOOOOOOOOOOOOO")
+                try:
+                    pygame.mixer.music.load("Personal-Finance/assets/Wii Sports Title Screen.mp3")
+                except:
+                    pygame.mixer.music.load("assets/Wii Sports Title Screen.mp3")
+        pygame.mixer.music.play(loops=-1)
 
     root = ctk.CTk()
     fg = styles.Foreground(root)
@@ -49,9 +73,7 @@ def show_secret():
     title.show()
     exitb = styles.RedX(fg.foreground,root)
     exitb.show()
-    jukebox = styles.SegmentedButton(fg.foreground,change_music,["Aria Math","Buying Tacos","Graze the roof","Gusty Garden Galaxy theme","Kass's theme (default)","Loonboon","Mii Channel (plaza)","Moog city 2","music","Ultimate battle","Wii Shop Channel","Wii Sports Title Screen"])
+    jukebox = styles.SegmentedButton(fg.foreground,change_music,["Aria Math","Buying Tacos","Graze the roof","Gusty Garden Galaxy theme","Kass's theme (default)","Loonboon","Mii Channel (plaza)","Moog city 2","Ultimate battle","Wii Shop Channel","Wii Sports Title Screen"])
     jukebox.show()
-    selected = jukebox.get_option()
-    
 
     root.mainloop()
