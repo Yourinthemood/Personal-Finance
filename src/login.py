@@ -3,7 +3,7 @@ import styles, JSON_management, main_menu
 import customtkinter as ctk, hashlib
 
 #Login Function:
-def log_in(mode):
+def log_in():
     def send(username,password):
       valid = False
       json_info = JSON_management.JSON_reader()
@@ -20,17 +20,19 @@ def log_in(mode):
         print("FIX YOUR INFORMATION NERD")
       else:
         root.destroy()
-        main_menu.main_menu(mode, "login")
+        main_menu.main_menu("login")
 
 
   #loop until login complete:
     #Display a Log in screen that has two text box fields labeled Username and Password Respectively. After those have a Enter or submit buttont to send info here
     root = ctk.CTk()
-    if mode == "1440p":
+    root.geometry("2560x1440+0+0")
+    root.attributes("-fullscreen", True)
+    if styles.selected_mode == "1440p":
         root.geometry("2560x1440+0+0")
-    elif mode == "1080p":
+    elif styles.selected_mode == "1080p":
         root.geometry("1920x1080+0+0")
-    elif mode == "fullscreen":
+    elif styles.selected_mode == "fullscreen":
         root.attributes("-fullscreen", True)
     ctk.set_appearance_mode("dark")
 

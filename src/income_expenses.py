@@ -1,13 +1,15 @@
 import customtkinter as ctk, csv
 import styles, secret_page_SHHHHHHHHHHHH
 
-def income(mode):
+def income():
     root = ctk.CTk()
-    if mode == "1440p":
+    root.geometry("2560x1440+0+0")
+    root.attributes("-fullscreen", True)
+    if styles.selected_mode == "1440p":
         root.geometry("2560x1440+0+0")
-    elif mode == "1080p":
+    elif styles.selected_mode == "1080p":
         root.geometry("1920x1080+0+0")
-    elif mode == "fullscreen":
+    elif styles.selected_mode == "fullscreen":
         root.attributes("-fullscreen", True)
     ctk.set_appearance_mode("dark")
 
@@ -52,13 +54,15 @@ def income(mode):
 
     root.mainloop()
 
-def expenses(mode):
+def expenses():
     root = ctk.CTk()
-    if mode == "1440p":
+    root.geometry("2560x1440+0+0")
+    root.attributes("-fullscreen", True)
+    if styles.selected_mode == "1440p":
         root.geometry("2560x1440+0+0")
-    elif mode == "1080p":
+    elif styles.selected_mode == "1080p":
         root.geometry("1920x1080+0+0")
-    elif mode == "fullscreen":
+    elif styles.selected_mode == "fullscreen":
         root.attributes("-fullscreen", True)
     ctk.set_appearance_mode("dark")
 
@@ -101,13 +105,13 @@ def expenses(mode):
     submit_button = styles.SumbitButton(foreground.foreground, lambda: check(), sizex=500, sizey=300)
     submit_button.show(1800, 700)
 
-    if mode == "1440p":
+    if styles.selected_mode == "1440p":
         scale_x = 1.0
         scale_y = 1.0
-    elif mode == "1080p":
+    elif styles.selected_mode == "1080p":
         scale_x = 1920 / 2560
         scale_y = 1080 / 1440
-    elif mode == "fullscreen":
+    elif styles.selected_mode == "fullscreen":
         scale_x = 1.0
         scale_y = 1.0
 
@@ -117,6 +121,7 @@ def expenses(mode):
             height=100,
             fg_color="#242424",
             command=secret_page_SHHHHHHHHHHHH.show_secret,
+            text="",
         )
     secret_button_totally.place(x=int(2560 * scale_x) - 50, y=int(1440 * scale_y) - 50, anchor="center")
     secret_button_totally.configure(width=int(100 * scale_x), height=int(100 * scale_y))

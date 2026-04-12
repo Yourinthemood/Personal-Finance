@@ -16,9 +16,9 @@ def login_screen():
     def send(login_signup):
         root.destroy()
         if login_signup == "login":
-            login.log_in(styles.selected_mode)
+            login.log_in()
         else:
-            signup.signup(styles.selected_mode)
+            signup.signup()
 
     #DISPLAY custom tkinter login screen GUI
     #Log in screen will have an option to log in to an existing account or an option to create a new account
@@ -49,7 +49,7 @@ def login_screen():
 
     # Ad Warning & Ad
     warning = styles.Warning(foreground.foreground)
-    warning_text = styles.OutputBox(warning.frame, "Click on adds to close them.", size=50)
+    warning_text = styles.OutputBox(warning.frame, "Click on ads to close them.", size=50)
     warning.show()
     warning_text.show()
     styles.Ads()

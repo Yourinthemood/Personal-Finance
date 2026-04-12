@@ -3,13 +3,15 @@
 import customtkinter as ctk
 import styles
 
-def savings_calc(mode):
+def savings_calc():
     root = ctk.CTk()
-    if mode == "1440p":
+    root.geometry("2560x1440+0+0")
+    root.attributes("-fullscreen", True)
+    if styles.selected_mode == "1440p":
         root.geometry("2560x1440+0+0")
-    elif mode == "1080p":
+    elif styles.selected_mode == "1080p":
         root.geometry("1920x1080+0+0")
-    elif mode == "fullscreen":
+    elif styles.selected_mode == "fullscreen":
         root.attributes("-fullscreen", True)
     ctk.set_appearance_mode("dark")
 
@@ -60,18 +62,20 @@ def savings_calc(mode):
     update()
     root.mainloop()
 
-def budget_calc(mode):
+def budget_calc():
     results = []
     num_categories = [0]
 
     def make_root():
         r = ctk.CTk()
-        if mode == "1440p":
-            r.geometry("2560x1440+0+0")
-        elif mode == "1080p":
-            r.geometry("1920x1080+0+0")
-        elif mode == "fullscreen":
-            r.attributes("-fullscreen", True)
+        root.geometry("2560x1440+0+0")
+        root.attributes("-fullscreen", True)
+        if styles.selected_mode == "1440p":
+            root.geometry("2560x1440+0+0")
+        elif styles.selected_mode == "1080p":
+            root.geometry("1920x1080+0+0")
+        elif styles.selected_mode == "fullscreen":
+            root.attributes("-fullscreen", True)
         ctk.set_appearance_mode("dark")
         return r
 
@@ -144,13 +148,15 @@ def budget_calc(mode):
 
     root.mainloop()
   
-def interest_calc(mode):
+def interest_calc():
     root = ctk.CTk()
-    if mode == "1440p":
+    root.geometry("2560x1440+0+0")
+    root.attributes("-fullscreen", True)
+    if styles.selected_mode == "1440p":
         root.geometry("2560x1440+0+0")
-    elif mode == "1080p":
+    elif styles.selected_mode == "1080p":
         root.geometry("1920x1080+0+0")
-    elif mode == "fullscreen":
+    elif styles.selected_mode == "fullscreen":
         root.attributes("-fullscreen", True)
     ctk.set_appearance_mode("dark")
 
@@ -204,13 +210,16 @@ def interest_calc(mode):
     update()
     root.mainloop()
 
-def compound_calc(mode):
+def compound_calc():
     root = ctk.CTk()
-    if mode == "1440p":
+    root.geometry("2560x1440+0+0")
+    root.attributes("-fullscreen", True)
+    if styles.selected_mode == "1440p":
         root.geometry("2560x1440+0+0")
-    elif mode == "1080p":
+    elif styles.selected_mode == "1080p":
         root.geometry("1920x1080+0+0")
-    elif mode == "fullscreen":
+    elif styles.selected_mode == "fullscreen":
+        root.attributes("-fullscreen", True)
         root.attributes("-fullscreen", True)
     ctk.set_appearance_mode("dark")
 
@@ -270,14 +279,16 @@ def compound_calc(mode):
     root.mainloop()
 
 #Budgeting Tools UI Function:
-def budgeting_tools(mode):
+def budgeting_tools():
     #Display All of the Budgeting tools on the window as buttons
     root = ctk.CTk()
-    if mode == "1440p":
+    root.geometry("2560x1440+0+0")
+    root.attributes("-fullscreen", True)
+    if styles.selected_mode == "1440p":
         root.geometry("2560x1440+0+0")
-    elif mode == "1080p":
+    elif styles.selected_mode == "1080p":
         root.geometry("1920x1080+0+0")
-    elif mode == "fullscreen":
+    elif styles.selected_mode == "fullscreen":
         root.attributes("-fullscreen", True)
     ctk.set_appearance_mode("dark")
     
@@ -294,16 +305,16 @@ def budgeting_tools(mode):
     x.show()
 
 
-    savings_goal = styles.BlueButton(foreground.foreground,"Savings Goal Calculator",command=lambda: savings_calc(mode),sizex=1000,sizey=250)
+    savings_goal = styles.BlueButton(foreground.foreground,"Savings Goal Calculator",command=lambda: savings_calc(),sizex=1000,sizey=250)
     savings_goal.show(600,600)
 
-    budget_allocator = styles.BlueButton(foreground.foreground,"Budget Allocator",command=lambda: budget_calc(mode),sizex=1000,sizey=250)
+    budget_allocator = styles.BlueButton(foreground.foreground,"Budget Allocator",command=lambda: budget_calc(),sizex=1000,sizey=250)
     budget_allocator.show(600,1000)
 
-    interest = styles.BlueButton(foreground.foreground,"Interest Calculator",command=lambda: interest_calc(mode),sizex=1000,sizey=250)
+    interest = styles.BlueButton(foreground.foreground,"Interest Calculator",command=lambda: interest_calc(),sizex=1000,sizey=250)
     interest.show(1800,600)
 
-    compound = styles.BlueButton(foreground.foreground,"Compound Interest Calculator",command=lambda: compound_calc(mode),sizex=1000,sizey=250)
+    compound = styles.BlueButton(foreground.foreground,"Compound Interest Calculator",command=lambda: compound_calc(),sizex=1000,sizey=250)
     compound.show(1800,1000)
 
     root.mainloop()

@@ -3,7 +3,7 @@ import styles, JSON_management, main_menu
 import customtkinter as ctk, hashlib
 
 #Sign up function:
-def signup(mode):
+def signup():
     def send(username,password):
         pasw = password.encode("utf-8")
         pasw = hashlib.blake2b(pasw).hexdigest()
@@ -13,15 +13,17 @@ def signup(mode):
         }
         JSON_management.JSON_add(data)
         root.destroy()
-        main_menu.main_menu(mode, source="signup")
+        main_menu.main_menu(source="signup")
 
         
     root = ctk.CTk()
-    if mode == "1440p":
+    root.geometry("2560x1440+0+0")
+    root.attributes("-fullscreen", True)
+    if styles.selected_mode == "1440p":
         root.geometry("2560x1440+0+0")
-    elif mode == "1080p":
+    elif styles.selected_mode == "1080p":
         root.geometry("1920x1080+0+0")
-    elif mode == "fullscreen":
+    elif styles.selected_mode == "fullscreen":
         root.attributes("-fullscreen", True)
     ctk.set_appearance_mode("dark")
 

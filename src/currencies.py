@@ -63,13 +63,15 @@ types = {
 }
 
 #define convert_currency function
-def convert(mode):
+def convert():
     root = ctk.CTk()
-    if mode == "1440p":
+    root.geometry("2560x1440+0+0")
+    root.attributes("-fullscreen", True)
+    if styles.selected_mode == "1440p":
         root.geometry("2560x1440+0+0")
-    elif mode == "1080p":
+    elif styles.selected_mode == "1080p":
         root.geometry("1920x1080+0+0")
-    elif mode == "fullscreen":
+    elif styles.selected_mode == "fullscreen":
         root.attributes("-fullscreen", True)
     ctk.set_appearance_mode("dark")
 
@@ -92,6 +94,27 @@ def convert(mode):
 
 #   ask user for target currency type
 #   store as target_type
+    result_label = styles.OutputBox(foreground.foreground, "")
+    result_label.show()
+
+    def match(selected):
+        if selected not in types:
+            result_label.set("Invalid currency type.")
+            return
+
+        try:
+            usd_amount = float(amount.get())
+        except ValueError:
+            result_label.configure(text="Invalid amount entered.")
+            return
+
+        converted_amount = usd_amount * types[selected]
+        result_label.set(f"{usd_amount:.2f} USD = {converted_amount:.2f} {selected}")
+                    
+
+    options = list(types.keys())
+    target = styles.SegmentedButton(foreground.foreground, match, options)
+    target.show()
 
 #   if target_type not in types
 #       display "Invalid currency type"
@@ -105,3 +128,5 @@ def convert(mode):
 #       usd_amount = converted_amount / types[target_type]
 
 #   save usd_amount to file
+
+    root.mainloop()

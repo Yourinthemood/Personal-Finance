@@ -1,13 +1,15 @@
 import customtkinter as ctk
 import styles
 
-def line_graph(mode):
+def line_graph():
     root = ctk.CTk()
-    if mode == "1440p":
+    root.geometry("2560x1440+0+0")
+    root.attributes("-fullscreen", True)
+    if styles.selected_mode == "1440p":
         root.geometry("2560x1440+0+0")
-    elif mode == "1080p":
+    elif styles.selected_mode == "1080p":
         root.geometry("1920x1080+0+0")
-    elif mode == "fullscreen":
+    elif styles.selected_mode == "fullscreen":
         root.attributes("-fullscreen", True)
     ctk.set_appearance_mode("dark")
 
@@ -23,13 +25,17 @@ def line_graph(mode):
     x = styles.RedX(foreground.foreground, root)
     x.show()
 
-def pie_chart(mode):
+    root.mainloop()
+
+def pie_chart():
     root = ctk.CTk()
-    if mode == "1440p":
+    root.geometry("2560x1440+0+0")
+    root.attributes("-fullscreen", True)
+    if styles.selected_mode == "1440p":
         root.geometry("2560x1440+0+0")
-    elif mode == "1080p":
+    elif styles.selected_mode == "1080p":
         root.geometry("1920x1080+0+0")
-    elif mode == "fullscreen":
+    elif styles.selected_mode == "fullscreen":
         root.attributes("-fullscreen", True)
     ctk.set_appearance_mode("dark")
 
@@ -44,3 +50,5 @@ def pie_chart(mode):
 
     x = styles.RedX(foreground.foreground, root)
     x.show()
+
+    root.mainloop()

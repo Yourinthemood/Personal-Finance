@@ -27,7 +27,7 @@ def show_secret():
                     pygame.mixer.music.load("Personal-Finance/assets/Gusty Garden Galaxy.mp3")
                 except:
                     pygame.mixer.music.load("assets/Gusty Garden Galaxy.mp3")
-            case "Kass's theme (default)":
+            case "Kass's theme":
                 try:
                     pygame.mixer.music.load("Personal-Finance/assets/Kass' Theme.mp3")
                 except:
@@ -65,6 +65,14 @@ def show_secret():
         pygame.mixer.music.play(loops=-1)
 
     root = ctk.CTk()
+    root.geometry("2560x1440+0+0")
+    root.attributes("-fullscreen", True)
+    if styles.selected_mode == "1440p":
+        root.geometry("2560x1440+0+0")
+    elif styles.selected_mode == "1080p":
+        root.geometry("1920x1080+0+0")
+    elif styles.selected_mode == "fullscreen":
+        root.attributes("-fullscreen", True)
     fg = styles.Foreground(root)
     fg.show()
     titlebox = styles.TitleBoxText(fg.foreground)
@@ -73,7 +81,7 @@ def show_secret():
     title.show()
     exitb = styles.RedX(fg.foreground,root)
     exitb.show()
-    jukebox = styles.SegmentedButton(fg.foreground,change_music,["Aria Math","Buying Tacos","Graze the roof","Gusty Garden Galaxy theme","Kass's theme (default)","Loonboon","Mii Channel (plaza)","Moog city 2","Ultimate battle","Wii Shop Channel","Wii Sports Title Screen"])
+    jukebox = styles.SegmentedButton(fg.foreground,change_music,["Aria Math","Buying Tacos","Graze the roof","Gusty Garden Galaxy theme","Kass's theme","Loonboon","Mii Channel (plaza)","Moog city 2","Ultimate battle","Wii Shop Channel","Wii Sports Title Screen"])
     jukebox.show()
 
     root.mainloop()
