@@ -7,20 +7,24 @@ Paragraph discription of your project
 ## How to use
 ***
 1. pip install -r requirements.txt
-2. Run
+2. Click on src folder
+3. Click on main.py
+4. Run main.py
+
 ***
 ## How to install libraries
 1. Open New Terminal
-2. type the command: pip install libraryname
-3. press the enter button
+2. type the command: pip install -r requirements.txt
+3. Press Enter
+
 ## Details on Project features
 ***
-- ALL key features in your repository with a detailed discription
-- This is a list frequently will include emojis
-🎮🏆🎯💾📀💵 
-
-## Installation Instructions 
-Notes being used in this class BUT if you have a full run file (.exe) for your project, this is where setup instructions go! 
+- This project includes a login/logout/signup functionality
+- It also includes graphs such as pie charts and line graphs
+- It includes new income/expense entries (Like a bank!)
+- It includes a currency conversion for many different currencies
+- It includes many different calculators for all your calculator needs
+- There's even a secret file if you can find it!
 
 ## Licence
 ***
@@ -28,6 +32,6 @@ No licence as this is made for a school project. Feel free to use as you would l
 
 ## Contributers
 - DigitalRage
-- futashikana (JS-CP1)
+- futashikana (futashikanahito)
 - Yourinthemood
 - titaniumlizard445
