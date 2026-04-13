@@ -1,0 +1,5 @@
+customtkinter>=5.2.2
+tkextrafont>=0.6.3
+pygame>=2.5.2
+pygame-ce>=2.5.7
+pillow>=12.2.0

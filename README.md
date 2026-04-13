@@ -6,12 +6,8 @@ Paragraph discription of your project
 
 ## How to use
 ***
-1. Install customtkinter
-2. Install tkextrafont
-3. Install pygame
-4. Install pygame-ce
-5. Install pillow
-6. Run
+1. pip install -r requirements.txt
+2. Run
 ***
 ## How to install libraries
 1. Open New Terminal
