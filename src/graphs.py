@@ -27,22 +27,38 @@ def line_graph(username):
     # read incomes.csv and save rows that match the username
     income_dates = []
     income_amounts = []
-    with open("files/incomes.csv") as f:
-        reader = csv.DictReader(f)
-        for row in reader:
-            if row["username"] == username:
-                income_dates.append(row["date"])
-                income_amounts.append(float(row["amount"]))
+    try:
+        with open("files/incomes.csv") as f:
+            reader = csv.DictReader(f)
+            for row in reader:
+                if row["username"] == username:
+                    income_dates.append(row["date"])
+                    income_amounts.append(float(row["amount"]))
+    except:
+        with open("Personal-Finance/files/incomes.csv") as f:
+            reader = csv.DictReader(f)
+            for row in reader:
+                if row["username"] == username:
+                    income_dates.append(row["date"])
+                    income_amounts.append(float(row["amount"]))
  
     # read expenses.csv and save rows that match the username
     expense_dates = []
     expense_amounts = []
-    with open("files/expenses.csv") as f:
-        reader = csv.DictReader(f)
-        for row in reader:
-            if row["username"] == username:
-                expense_dates.append(row["date"])
-                expense_amounts.append(float(row["amount"]))
+    try:
+        with open("files/expenses.csv") as f:
+            reader = csv.DictReader(f)
+            for row in reader:
+                if row["username"] == username:
+                    expense_dates.append(row["date"])
+                    expense_amounts.append(float(row["amount"]))
+    except:
+        with open("Personal-Finance/files/expenses.csv") as f:
+            reader = csv.DictReader(f)
+            for row in reader:
+                if row["username"] == username:
+                    expense_dates.append(row["date"])
+                    expense_amounts.append(float(row["amount"]))
  
     # make the chart
     fig, ax = plt.subplots(figsize=(10, 5))
@@ -84,27 +100,49 @@ def pie_chart(username):
  
     # read incomes.csv and add up amounts per category
     income_categories = {}
-    with open("files/incomes.csv") as f:
-        reader = csv.DictReader(f)
-        for row in reader:
-            if row["username"] == username:
-                cat = row["category"]
-                if cat in income_categories:
-                    income_categories[cat] += float(row["amount"])
-                else:
-                    income_categories[cat] = float(row["amount"])
+    try:
+        with open("files/incomes.csv") as f:
+            reader = csv.DictReader(f)
+            for row in reader:
+                if row["username"] == username:
+                    cat = row["category"]
+                    if cat in income_categories:
+                        income_categories[cat] += float(row["amount"])
+                    else:
+                        income_categories[cat] = float(row["amount"])
+    except:
+        with open("Personal-Finance/files/incomes.csv") as f:
+            reader = csv.DictReader(f)
+            for row in reader:
+                if row["username"] == username:
+                    cat = row["category"]
+                    if cat in income_categories:
+                        income_categories[cat] += float(row["amount"])
+                    else:
+                        income_categories[cat] = float(row["amount"])
  
     # read expenses.csv and add up amounts per category
     expense_categories = {}
-    with open("files/expenses.csv") as f:
-        reader = csv.DictReader(f)
-        for row in reader:
-            if row["username"] == username:
-                cat = row["category"]
-                if cat in expense_categories:
-                    expense_categories[cat] += float(row["amount"])
-                else:
-                    expense_categories[cat] = float(row["amount"])
+    try:
+        with open("files/expenses.csv") as f:
+            reader = csv.DictReader(f)
+            for row in reader:
+                if row["username"] == username:
+                    cat = row["category"]
+                    if cat in expense_categories:
+                        expense_categories[cat] += float(row["amount"])
+                    else:
+                        expense_categories[cat] = float(row["amount"])
+    except:
+        with open("Personal-Finance/files/expenses.csv") as f:
+            reader = csv.DictReader(f)
+            for row in reader:
+                if row["username"] == username:
+                    cat = row["category"]
+                    if cat in expense_categories:
+                        expense_categories[cat] += float(row["amount"])
+                    else:
+                        expense_categories[cat] = float(row["amount"])
  
     # make two pie charts side by side
     fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(12, 5))

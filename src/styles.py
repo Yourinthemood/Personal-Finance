@@ -35,17 +35,17 @@ def from_rgb(rgb):
     return "#%02x%02x%02x" % rgb
 
 # Load fonts
-_font_loaded_roots = set()
-def load_font(root):
-    root_id = id(root)
-    if root_id not in _font_loaded_roots:
-        Font(file="docs/images/Dongle-Bold.ttf", family="Dongle", root=root)
-        _font_loaded_roots.add(root_id)
+#_font_loaded_roots = set()
+#def load_font(root):
+#    root_id = id(root)
+#    if root_id not in _font_loaded_roots:
+#        Font(file="docs/images/Dongle-Bold.ttf", family="Arial", root=root)
+#        _font_loaded_roots.add(root_id)
 
 class Foreground:
     def __init__(self, root):
         self.root = root
-        load_font(root)
+        #load_font(root)
         self.foreground = ctk.CTkFrame(
             master=root,
             border_width=10,
@@ -90,7 +90,7 @@ class TextBox:
             border_color=from_rgb((0,0,0)),
             placeholder_text=text,
             text_color=from_rgb((0,0,0)),
-            font=("Dongle", 64)
+            font=("Arial", 64)
         )
         self.sizex=sizex
         self.sizey=sizey
@@ -116,7 +116,7 @@ class BlueButton:
             fg_color=values["blue"],
             text=text,
             command=command,
-            font=("Dongle", 32)
+            font=("Arial", 32)
         )
         self.sizex = sizex
         self.sizey = sizey
@@ -139,7 +139,7 @@ class GreenButton:
             fg_color=values["green"],
             text=text,
             command=command,
-            font=("Dongle", 32)
+            font=("Arial", 32)
         )
         self.sizex = sizex
         self.sizey = sizey
@@ -192,7 +192,7 @@ class SumbitButton:
             text="Submit",
             fg_color=values["green"],
             command=command,
-            font=("Dongle", 32)
+            font=("Arial", 32)
         )
         self.sizex=sizex
         self.sizey=sizey
@@ -208,7 +208,7 @@ class OutputBox:
         self.text = ctk.CTkLabel(
             master=titleframe,
             text=text,
-            font=("Dongle", size),
+            font=("Arial", size),
             text_color=values["linen"]
         )
 

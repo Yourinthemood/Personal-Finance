@@ -24,10 +24,15 @@ def income(username):
             popup.show()
             popup_text.show()
             return
+        try:
+            with open("files/incomes.csv", "a", newline="") as file:
+                csv_writer = csv.writer(file)
+                csv_writer.writerow([username, datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"), amt, cate])
+        except:
+            with open("Personal-Finance/files/incomes.csv", "a", newline="") as file:
+                csv_writer = csv.writer(file)
+                csv_writer.writerow([username, datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"), amt, cate])
 
-        with open("files/incomes.csv", "a", newline="") as file:
-            csv_writer = csv.writer(file)
-            csv_writer.writerow([username, datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"), amt, cate])
         root.destroy()
     
     foreground = styles.Foreground(root)
@@ -77,10 +82,15 @@ def expenses(username):
             popup.show()
             popup_text.show()
             return
+        try:
+            with open("files/expenses.csv", "a", newline="") as file:
+                csv_writer = csv.writer(file)
+                csv_writer.writerow([username, datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"), amt, nme])
+        except:
+            with open("files/expenses.csv", "a", newline="") as file:
+                csv_writer = csv.writer(file)
+                csv_writer.writerow([username, datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"), amt, nme])
 
-        with open("files/expenses.csv", "a", newline="") as file:
-            csv_writer = csv.writer(file)
-            csv_writer.writerow([username, datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"), amt, nme])
         root.destroy()
     
     foreground = styles.Foreground(root)
