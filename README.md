@@ -1,8 +1,12 @@
 
-# Personal Finances (NOT FINISHED)
+# Personal Finances
 ***
-![Image of the code while running](location of image in folders)
-Paragraph discription of your project
+This program is a general use, all-in-one app that helps you take control of your finances 
+and plan confidently for the future. Whether you're tracking daily expenses, monitoring your 
+income, converting currencies, or running financial calculations, Personal Finances brings 
+everything you need into a single, easy-to-use interface. Built with accessibility in mind, 
+it's designed for anyone - from students managing a budget for the first time to individuals 
+looking for a smarter way to stay on top of their money.
 
 ## How to use
 ***
