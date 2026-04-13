@@ -1,6 +1,6 @@
 #You are not suppossed to be here, Go away
 import styles
-import customtkinter as ctk, pygame
+import customtkinter as ctk, pygame, random
 
 def show_secret():
     def change_music(selected):
@@ -62,6 +62,16 @@ def show_secret():
                     pygame.mixer.music.load("Personal-Finance/assets/Wii Sports Title Screen.mp3")
                 except:
                     pygame.mixer.music.load("assets/Wii Sports Title Screen.mp3")
+            case "Kass' Theme (Remix)":
+                try:
+                    pygame.mixer.music.load("Personal-Finance/assets/Kass Theme (Remix).mp3")
+                except:
+                    pygame.mixer.music.load("assets/Kass Theme (Remix).mp3")
+            case "Attack of the Airships":
+                try:
+                    pygame.mixer.music.load("Personal-Finance/assets/Attack of the Airships.mp3")
+                except:
+                    pygame.mixer.music.load("assets/Attack of the Airships.mp3")
         pygame.mixer.music.play(loops=-1)
 
     root = ctk.CTk()
@@ -81,7 +91,7 @@ def show_secret():
     title.show()
     exitb = styles.RedX(fg.foreground,root)
     exitb.show()
-    jukebox = styles.SegmentedButton(fg.foreground,change_music,["Aria Math","Buying Tacos","Graze the roof","Gusty Garden Galaxy theme","Kass's theme","Loonboon","Mii Channel (plaza)","Moog city 2","Ultimate battle","Wii Shop Channel","Wii Sports Title Screen"])
+    jukebox = styles.SegmentedButton(fg.foreground,change_music,["Aria Math","Buying Tacos","Graze the roof","Gusty Garden Galaxy theme","Kass's theme","Loonboon","Mii Channel (plaza)","Moog city 2","Ultimate battle","Wii Shop Channel","Wii Sports Title Screen","Kass' Theme (Remix)","Attack of the Airships"])
     jukebox.show()
 
     root.mainloop()
