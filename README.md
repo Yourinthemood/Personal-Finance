@@ -16,6 +16,7 @@ Paragraph discription of your project
 1. Open New Terminal
 2. type the command: pip install -r requirements.txt
 3. Press Enter
+Not Working? Try this command: -m pip install -r requirements.txt
 
 ## Details on Project features
 ***

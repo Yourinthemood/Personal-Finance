@@ -9,7 +9,7 @@ from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
  
 def line_graph(username):
     root = ctk.CTk()
-    root.attributes("-fullscreen", True)
+    styles.apply_screen_resolution(root)
     ctk.set_appearance_mode("dark")
  
     foreground = styles.Foreground(root)
@@ -83,7 +83,7 @@ def line_graph(username):
  
 def pie_chart(username):
     root = ctk.CTk()
-    root.attributes("-fullscreen", True)
+    styles.apply_screen_resolution(root)
     ctk.set_appearance_mode("dark")
  
     foreground = styles.Foreground(root)

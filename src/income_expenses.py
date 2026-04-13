@@ -3,14 +3,7 @@ import styles, secret_page_SHHHHHHHHHHHH
 
 def income(username):
     root = ctk.CTk()
-    root.geometry("2560x1440+0+0")
-    root.attributes("-fullscreen", True)
-    if styles.selected_mode == "1440p":
-        root.geometry("2560x1440+0+0")
-    elif styles.selected_mode == "1080p":
-        root.geometry("1920x1080+0+0")
-    elif styles.selected_mode == "fullscreen":
-        root.attributes("-fullscreen", True)
+    styles.apply_screen_resolution(root)
     ctk.set_appearance_mode("dark")
 
     def check():
@@ -61,14 +54,7 @@ def income(username):
 
 def expenses(username):
     root = ctk.CTk()
-    root.geometry("2560x1440+0+0")
-    root.attributes("-fullscreen", True)
-    if styles.selected_mode == "1440p":
-        root.geometry("2560x1440+0+0")
-    elif styles.selected_mode == "1080p":
-        root.geometry("1920x1080+0+0")
-    elif styles.selected_mode == "fullscreen":
-        root.attributes("-fullscreen", True)
+    styles.apply_screen_resolution(root)
     ctk.set_appearance_mode("dark")
 
     def check():

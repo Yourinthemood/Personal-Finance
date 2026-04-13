@@ -5,14 +5,7 @@ import styles
 
 def savings_calc():
     root = ctk.CTk()
-    root.geometry("2560x1440+0+0")
-    root.attributes("-fullscreen", True)
-    if styles.selected_mode == "1440p":
-        root.geometry("2560x1440+0+0")
-    elif styles.selected_mode == "1080p":
-        root.geometry("1920x1080+0+0")
-    elif styles.selected_mode == "fullscreen":
-        root.attributes("-fullscreen", True)
+    styles.apply_screen_resolution(root)
     ctk.set_appearance_mode("dark")
 
     def update():
@@ -68,14 +61,7 @@ def budget_calc():
 
     def make_root():
         r = ctk.CTk()
-        r.geometry("2560x1440+0+0")
-        r.attributes("-fullscreen", True)
-        if styles.selected_mode == "1440p":
-            r.geometry("2560x1440+0+0")
-        elif styles.selected_mode == "1080p":
-            r.geometry("1920x1080+0+0")
-        elif styles.selected_mode == "fullscreen":
-            r.attributes("-fullscreen", True)
+        styles.apply_screen_resolution(r)
         ctk.set_appearance_mode("dark")
         return r
 
@@ -150,14 +136,7 @@ def budget_calc():
   
 def interest_calc():
     root = ctk.CTk()
-    root.geometry("2560x1440+0+0")
-    root.attributes("-fullscreen", True)
-    if styles.selected_mode == "1440p":
-        root.geometry("2560x1440+0+0")
-    elif styles.selected_mode == "1080p":
-        root.geometry("1920x1080+0+0")
-    elif styles.selected_mode == "fullscreen":
-        root.attributes("-fullscreen", True)
+    styles.apply_screen_resolution(root)
     ctk.set_appearance_mode("dark")
 
     def update():
@@ -176,7 +155,7 @@ def interest_calc():
             result = "Waiting for input..."
             size = 75
 
-        text.text.configure(text=result, font=("Dongle", size))
+        text.text.configure(text=result, font=("Dongle", styles.scale_value(size)))
         root.after(10, update)
     
     foreground = styles.Foreground(root)
@@ -212,15 +191,7 @@ def interest_calc():
 
 def compound_calc():
     root = ctk.CTk()
-    root.geometry("2560x1440+0+0")
-    root.attributes("-fullscreen", True)
-    if styles.selected_mode == "1440p":
-        root.geometry("2560x1440+0+0")
-    elif styles.selected_mode == "1080p":
-        root.geometry("1920x1080+0+0")
-    elif styles.selected_mode == "fullscreen":
-        root.attributes("-fullscreen", True)
-        root.attributes("-fullscreen", True)
+    styles.apply_screen_resolution(root)
     ctk.set_appearance_mode("dark")
 
     def update():
@@ -241,7 +212,7 @@ def compound_calc():
             result = "Waiting for input..."
             size = 75
 
-        text.text.configure(text=result, font=("Dongle", size))
+        text.text.configure(text=result, font=("Dongle", styles.scale_value(size)))
         root.after(10, update)
     
     foreground = styles.Foreground(root)
@@ -282,14 +253,7 @@ def compound_calc():
 def budgeting_tools():
     #Display All of the Budgeting tools on the window as buttons
     root = ctk.CTk()
-    root.geometry("2560x1440+0+0")
-    root.attributes("-fullscreen", True)
-    if styles.selected_mode == "1440p":
-        root.geometry("2560x1440+0+0")
-    elif styles.selected_mode == "1080p":
-        root.geometry("1920x1080+0+0")
-    elif styles.selected_mode == "fullscreen":
-        root.attributes("-fullscreen", True)
+    styles.apply_screen_resolution(root)
     ctk.set_appearance_mode("dark")
     
     foreground = styles.Foreground(root)

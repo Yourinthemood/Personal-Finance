@@ -64,13 +64,7 @@ types = {
 
 def convert():
     root = ctk.CTk()
-    root.attributes("-fullscreen", True)
-    if styles.selected_mode == "1440p":
-        root.geometry("2560x1440+0+0")
-    elif styles.selected_mode == "1080p":
-        root.geometry("1920x1080+0+0")
-    elif styles.selected_mode == "fullscreen":
-        root.attributes("-fullscreen", True)
+    styles.apply_screen_resolution(root)
     ctk.set_appearance_mode("dark")
 
     foreground = styles.Foreground(root)
@@ -88,7 +82,7 @@ def convert():
     scroll_frame = ctk.CTkScrollableFrame(
         master=foreground.foreground,
         label_text="Select Currency",
-        label_font=("Arial", 18),
+        label_font=("Arial", styles.scale_value(18)),
         width=880,
         height=680,
     )
@@ -106,7 +100,7 @@ def convert():
     result_label = ctk.CTkLabel(
         result_box,
         text="Select a currency\nand enter an amount",
-        font=("Arial", 28, "bold"),
+        font=("Arial", styles.scale_value(28), "bold"),
         text_color="white",
         wraplength=440,
         justify="center",
@@ -117,7 +111,7 @@ def convert():
     amount_entry = ctk.CTkEntry(
         foreground.foreground,
         placeholder_text="Enter USD amount...",
-        font=("Arial", 22),
+        font=("Arial", styles.scale_value(22)),
         width=480,
         height=52,
     )
@@ -176,7 +170,7 @@ def convert():
             text_color="white",
             hover_color="#2a2d2e",
             corner_radius=8,
-            font=("Arial", 15),
+            font=("Arial", styles.scale_value(15)),
             command=lambda n=name: on_currency_select(n),
         )
         btn.grid(row=row, column=col, padx=5, pady=5, sticky="ew")
