@@ -48,11 +48,11 @@ def login_screen():
 
 
     # Ad Warning & Ad
-    warning = styles.Warning(foreground.foreground)
-    warning_text = styles.OutputBox(warning.frame, "Click on ads to close them.", size=50)
-    warning.show()
-    warning_text.show()
-    styles.Ads()
+    #warning = styles.Warning(foreground.foreground)
+    #warning_text = styles.OutputBox(warning.frame, "Click on ads to close them.", size=50)
+    #warning.show()
+    #warning_text.show()
+    #styles.Ads()
     
     #if the user clicks the New account button:
         #trigger create new account function

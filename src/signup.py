@@ -4,7 +4,7 @@ import customtkinter as ctk, hashlib
 
 #Sign up function:
 def signup():
-    def send(username,password):
+    def send(username, password):
         pasw = password.encode("utf-8")
         pasw = hashlib.blake2b(pasw).hexdigest()
         data = {
@@ -13,7 +13,7 @@ def signup():
         }
         JSON_management.JSON_add(data)
         root.destroy()
-        main_menu.main_menu(source="signup")
+        main_menu.main_menu("signup", username)
 
         
     root = ctk.CTk()

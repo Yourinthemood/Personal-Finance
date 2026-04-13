@@ -2,7 +2,7 @@
 import styles, income_expenses, budgeting_tools, currencies, graphs
 import customtkinter as ctk
 
-def main_menu(source):
+def main_menu(source, username):
     #Once the User has Logged in or Created a Account:
     #(While Logged in):
     root = ctk.CTk()
@@ -48,12 +48,12 @@ def main_menu(source):
 
     #if clicked Display Pie Chart:
         #trigger Pie Chart Function
-    pie_chart = styles.BlueButton(foreground.foreground,"Pie Chart",command=lambda: graphs.pie_chart(),sizex=650,sizey=250)
+    pie_chart = styles.BlueButton(foreground.foreground,"Pie Chart",command=lambda: graphs.pie_chart(username),sizex=650,sizey=250)
     pie_chart.show(400,600)
 
     #if clicked Display Line Graph
         #trigger Line Graph Function
-    line_graph = styles.BlueButton(foreground.foreground,"Line Graph",command=lambda: graphs.line_graph(),sizex=650,sizey=250)
+    line_graph = styles.BlueButton(foreground.foreground,"Line Graph",command=lambda: graphs.line_graph(username),sizex=650,sizey=250)
     line_graph.show(400,1000)
 
     #if clicked Budgeting Tools:
@@ -68,12 +68,12 @@ def main_menu(source):
 
     #if clicked New Income:
         #trigger New Income Function
-    income = styles.BlueButton(foreground.foreground,"New Income",command=lambda: income_expenses.income(),sizex=650,sizey=250)
+    income = styles.BlueButton(foreground.foreground,"New Income",command=lambda: income_expenses.income(username),sizex=650,sizey=250)
     income.show(2000,600)
 
     #if clicked New Expense:
         #trigger New Expense Function
-    expense = styles.BlueButton(foreground.foreground,"New Expense",command=lambda: income_expenses.expenses(),sizex=650,sizey=250)
+    expense = styles.BlueButton(foreground.foreground,"New Expense",command=lambda: income_expenses.expenses(username),sizex=650,sizey=250)
     expense.show(2000,1000)
 
 

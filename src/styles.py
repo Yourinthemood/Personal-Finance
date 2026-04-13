@@ -378,12 +378,12 @@ class Warning:
 
 
 class SegmentedButton:
-    def __init__(self, foreground, command, options=[]):
-        self.segmented_button = ctk.CTkSegmentedButton(foreground, values=options, command=command)
+    def __init__(self, foreground, command, options=[], height=28):
+        self.segmented_button = ctk.CTkSegmentedButton(foreground, values=options, command=command, height=height)
         self.segmented_button.set(options[0] if options else "Kass' theme")
     
     def get_option(self):
         return self.segmented_button.get()
     
-    def show(self):
-        self.segmented_button.pack(pady=200)
+    def show(self, pady=200):
+        self.segmented_button.pack(pady=pady)

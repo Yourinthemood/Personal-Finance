@@ -20,7 +20,7 @@ def log_in():
         print("FIX YOUR INFORMATION NERD")
       else:
         root.destroy()
-        main_menu.main_menu("login")
+        main_menu.main_menu("login", username)
 
 
   #loop until login complete:

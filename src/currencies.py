@@ -62,10 +62,8 @@ types = {
     "Vietnamese Dong": 26339.98,
 }
 
-#define convert_currency function
 def convert():
     root = ctk.CTk()
-    root.geometry("2560x1440+0+0")
     root.attributes("-fullscreen", True)
     if styles.selected_mode == "1440p":
         root.geometry("2560x1440+0+0")
@@ -87,46 +85,101 @@ def convert():
     x = styles.RedX(foreground.foreground, root)
     x.show()
 
-#   ask user for amount in US Dollars
-#   store as usd_amount
-    amount = styles.TextBox(foreground.foreground, "Amount: ")
-    amount.show(700, 1200)
+    scroll_frame = ctk.CTkScrollableFrame(
+        master=foreground.foreground,
+        label_text="Select Currency",
+        label_font=("Arial", 18),
+        width=880,
+        height=680,
+    )
+    scroll_frame.place(x=40, y=200)
 
-#   ask user for target currency type
-#   store as target_type
-    result_label = styles.OutputBox(foreground.foreground, "")
-    result_label.show()
+    result_box = ctk.CTkFrame(
+        foreground.foreground,
+        fg_color="#4a7c59",
+        corner_radius=14,
+        width=480,
+        height=300,
+    )
+    result_box.place(x=980, y=200)
 
-    def match(selected):
-        if selected not in types:
-            result_label.set("Invalid currency type.")
+    result_label = ctk.CTkLabel(
+        result_box,
+        text="Select a currency\nand enter an amount",
+        font=("Arial", 28, "bold"),
+        text_color="white",
+        wraplength=440,
+        justify="center",
+        fg_color="transparent",
+    )
+    result_label.place(relx=0.5, rely=0.5, anchor="center")
+
+    amount_entry = ctk.CTkEntry(
+        foreground.foreground,
+        placeholder_text="Enter USD amount...",
+        font=("Arial", 22),
+        width=480,
+        height=52,
+    )
+    amount_entry.place(x=980, y=540)
+
+    selected_currency = {"value": None}
+    currency_buttons = {}
+
+    def run_conversion():
+        sel = selected_currency["value"]
+        raw = amount_entry.get().strip()
+
+        if not sel and not raw:
+            result_label.configure(text="Select a currency\nand enter an amount")
             return
-
+        if not sel:
+            result_label.configure(text="Select a currency")
+            return
+        if not raw:
+            result_label.configure(text="Enter an amount below")
+            return
         try:
-            usd_amount = float(amount.get())
+            usd_amount = float(raw)
         except ValueError:
-            result_label.configure(text="Invalid amount entered.")
+            result_label.configure(text="Enter a valid number")
             return
 
-        converted_amount = usd_amount * types[selected]
-        result_label.set(f"{usd_amount:.2f} USD = {converted_amount:.2f} {selected}")
-                    
+        converted = usd_amount * types[sel]
+        result_label.configure(
+            text=f"{usd_amount:,.2f} USD\n=\n{converted:,.2f}\n{sel}"
+        )
 
-    options = list(types.keys())
-    target = styles.SegmentedButton(foreground.foreground, match, options)
-    target.show()
+    def on_currency_select(name):
+        prev = selected_currency["value"]
+        if prev and prev in currency_buttons:
+            currency_buttons[prev].configure(fg_color="transparent", text_color="white")
+        selected_currency["value"] = name
+        currency_buttons[name].configure(fg_color="#1f6aa5", text_color="white")
+        run_conversion()
 
-#   if target_type not in types
-#       display "Invalid currency type"
-#       stop
+    submit = styles.SumbitButton(foreground.foreground, command=run_conversion)
+    submit.show(x=1600, y=850)
 
-#   converted_amount = usd_amount * types[target_type]
+    amount_entry.bind("<Return>", lambda e: run_conversion())
 
-#   display converted_amount and target_type
-
-#   when finished using converted_amount
-#       usd_amount = converted_amount / types[target_type]
-
-#   save usd_amount to file
+    for i, name in enumerate(types.keys()):
+        row, col = divmod(i, 5)
+        btn = ctk.CTkButton(
+            scroll_frame,
+            text=name,
+            width=160,
+            height=40,
+            fg_color="transparent",
+            border_width=1,
+            border_color="#555555",
+            text_color="white",
+            hover_color="#2a2d2e",
+            corner_radius=8,
+            font=("Arial", 15),
+            command=lambda n=name: on_currency_select(n),
+        )
+        btn.grid(row=row, column=col, padx=5, pady=5, sticky="ew")
+        currency_buttons[name] = btn
 
     root.mainloop()

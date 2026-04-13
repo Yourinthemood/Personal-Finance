@@ -1,7 +1,7 @@
-import customtkinter as ctk, csv
+import customtkinter as ctk, csv, datetime
 import styles, secret_page_SHHHHHHHHHHHH
 
-def income():
+def income(username):
     root = ctk.CTk()
     root.geometry("2560x1440+0+0")
     root.attributes("-fullscreen", True)
@@ -15,7 +15,7 @@ def income():
 
     def check():
         amt = amount.get_text()
-        nme = name.get_text()
+        cate = cat.get_text()
         try:
             float(amt)
         except ValueError:
@@ -27,7 +27,7 @@ def income():
 
         with open("files/incomes.csv", "a", newline="") as file:
             csv_writer = csv.writer(file)
-            csv_writer.writerow([nme, amt])
+            csv_writer.writerow([username, datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"), amt, cate])
         root.destroy()
     
     foreground = styles.Foreground(root)
@@ -46,15 +46,15 @@ def income():
     amount = styles.TextBox(foreground.foreground, "Amount: ")
     amount.show(700,600)
 
-    name = styles.TextBox(foreground.foreground, "Income Name: ")
-    name.show(700,800)
+    cat = styles.TextBox(foreground.foreground, "Income Category: ")
+    cat.show(700,800)
 
     submit_button = styles.SumbitButton(foreground.foreground, lambda: check(), sizex=500, sizey=300)
     submit_button.show(1800, 700)
 
     root.mainloop()
 
-def expenses():
+def expenses(username):
     root = ctk.CTk()
     root.geometry("2560x1440+0+0")
     root.attributes("-fullscreen", True)
@@ -80,7 +80,7 @@ def expenses():
 
         with open("files/expenses.csv", "a", newline="") as file:
             csv_writer = csv.writer(file)
-            csv_writer.writerow([nme, amt])
+            csv_writer.writerow([username, datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"), amt, nme])
         root.destroy()
     
     foreground = styles.Foreground(root)
@@ -99,7 +99,7 @@ def expenses():
     amount = styles.TextBox(foreground.foreground, "Amount: ")
     amount.show(700,600)
 
-    name = styles.TextBox(foreground.foreground, "Expense Name: ")
+    name = styles.TextBox(foreground.foreground, "Expense Category: ")
     name.show(700,800)
 
     submit_button = styles.SumbitButton(foreground.foreground, lambda: check(), sizex=500, sizey=300)
