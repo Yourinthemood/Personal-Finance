@@ -7,7 +7,7 @@ income, converting currencies, or running financial calculations, Personal Finan
 everything you need into a single, easy-to-use interface. Built with accessibility in mind, 
 it's designed for anyone - from students managing a budget for the first time to individuals 
 looking for a smarter way to stay on top of their money.
-[Image of the code while running](assets\titlescreen.png)
+[Image of the code while running](assets/titlescreen.png)
 
 ## How to use
 ***
